@@ -1,0 +1,136 @@
+/* PIONX R13. Gemini design direction, reviewed for existing PIONX controls. */
+:root {--px-bg:#f9f9f7;--px-panel:#fff;--px-text:#181a1c;--px-muted:#62676e;--px-border:#dedfdd;--px-blue:#2758da;--px-radius:8px;}
+#publicSite {background:var(--px-bg);color:var(--px-text);font-family:Inter,Arial,system-ui,sans-serif;overflow-x:clip;}
+#publicSite * {box-sizing:border-box;}
+#publicSite .public-bg {display:none;}
+#publicSite .public-header {background:rgba(249,249,247,.96);border-bottom:1px solid var(--px-border);box-shadow:none;min-height:82px;padding:14px 4%;gap:20px;}
+#publicSite .public-brand b {color:var(--px-text);letter-spacing:.05em;font-size:19px;}
+#publicSite .public-brand small {color:var(--px-muted);font-size:10px;letter-spacing:.13em;}
+#publicSite .public-nav {gap:25px;}
+#publicSite .public-nav a {color:var(--px-muted);font-size:14px;letter-spacing:0;text-transform:none;}
+#publicSite .public-nav a:hover {color:var(--px-blue);}
+#publicSite .public-signin,#publicSite .public-menu-review {color:var(--px-text);background:transparent;border:1px solid var(--px-border);border-radius:7px;padding:0 18px;}
+#publicSite .public-main {max-width:1400px;padding:54px 4% 70px;}
+#publicSite .public-hero {grid-template-columns:1fr 1.05fr;min-height:560px;gap:64px;padding:12px 0 55px;}
+#publicSite .public-copy {max-width:620px;}
+#publicSite .eyebrow {color:var(--px-blue);font-size:11px;letter-spacing:.15em;line-height:1.6;font-weight:700;}
+#publicSite .public-copy h1 {font-size:clamp(42px,5.3vw,76px);font-weight:500;letter-spacing:-.055em;line-height:1.07;margin:22px 0;}
+#publicSite .public-copy h1 span {color:var(--px-text);}
+#publicSite .public-copy p {font-size:18px;color:var(--px-muted);line-height:1.65;max-width:490px;}
+#publicSite .public-cta {gap:12px;margin-top:28px;flex-wrap:wrap;}
+#publicSite .gold-btn {background:var(--px-blue);color:#fff;box-shadow:none;border:1px solid var(--px-blue);border-radius:7px;min-height:48px;padding:0 23px;font-size:14px;font-weight:600;}
+#publicSite .gold-btn:hover {background:#1742b4;}
+#publicSite .glass-btn {background:transparent;color:var(--px-text);border:1px solid var(--px-border);border-radius:7px;min-height:48px;padding:0 20px;font-size:14px;}
+#publicSite .public-trust {gap:8px 14px;margin-top:25px;}
+#publicSite .public-trust span {padding:0;border:0;background:transparent;color:var(--px-muted);font-size:11px;line-height:1.8;}
+#publicSite .professional-visual {margin:0;position:relative;min-width:0;}
+#publicSite .professional-visual>img {width:100%;height:510px;object-fit:cover;display:block;border-radius:12px;}
+#publicSite .professional-visual figcaption {position:absolute;left:22px;right:22px;bottom:22px;background:rgba(255,255,255,.95);border-radius:7px;padding:18px 22px;display:grid;gap:8px;}
+#publicSite .professional-visual figcaption span {font-size:9px;letter-spacing:.13em;color:var(--px-muted);}
+#publicSite .professional-visual figcaption b {font-size:17px;font-weight:500;}
+#publicSite .public-strip {gap:16px;margin-top:32px;}
+#publicSite .public-strip article {background:#fff;border:1px solid var(--px-border);border-radius:8px;box-shadow:none;padding:26px;min-height:150px;}
+#publicSite .public-strip b {font-size:17px;font-weight:600;color:var(--px-text);}
+#publicSite .public-strip p,#publicSite .public-showcase p,#publicSite .public-section-copy {color:var(--px-muted);font-size:15px;line-height:1.7;}
+#publicSite .public-section,#publicSite .public-showcase {margin-top:100px;scroll-margin-top:115px;}
+#publicSite .public-section>h2,#publicSite .public-showcase h2,#publicSite .professional-entry h2 {font-size:clamp(28px,3.2vw,44px);font-weight:500;letter-spacing:-.035em;line-height:1.15;margin:14px 0 25px;}
+#publicSite .public-section>h2 {max-width:680px;}
+#publicSite .public-showcase {grid-template-columns:.7fr 1.3fr;gap:55px;}
+#publicSite .public-gallery {gap:12px;}
+#publicSite .public-gallery img {border:0;border-radius:8px;height:190px;}
+#publicSite .public-gallery img:first-child {height:392px;}
+#publicSite .price-preview-card {background:#fff!important;border:1px solid var(--px-border);border-radius:8px!important;padding:26px!important;color:var(--px-text);}
+#publicSite .price-preview-card small,#publicSite .price-preview-card span {color:var(--px-muted);}
+#publicSite .price-preview-card b {color:var(--px-text);}
+#publicSite .professional-entry {margin-top:100px;padding:55px;background:#eeefeb;border-radius:12px;display:grid;grid-template-columns:1fr 420px;gap:55px;align-items:center;}
+#publicSite .professional-entry p {color:var(--px-muted);font-size:16px;line-height:1.7;max-width:380px;}
+#publicSite .auth-card {background:#fff;border:1px solid var(--px-border);border-radius:10px;box-shadow:0 8px 32px #171b2310;padding:28px;width:100%;max-width:480px;scroll-margin-top:110px;}
+#publicSite .auth-head b {color:var(--px-text);font-size:17px;}
+#publicSite .auth-head small,#publicSite .auth-pane label,#publicSite .auth-note,#publicSite .auth-divider b {color:var(--px-muted);}
+#publicSite .auth-tabs {background:#f5f5f3;border-color:var(--px-border);border-radius:7px;padding:4px;}
+#publicSite .auth-tabs button {color:var(--px-muted);border-radius:5px;font-size:13px;}
+#publicSite .auth-tabs button.active {background:#fff;color:var(--px-text);box-shadow:0 1px 4px #00000012;}
+#publicSite .auth-pane input:not([type=checkbox]) {background:#fff;color:var(--px-text);border:1px solid var(--px-border);border-radius:6px;font-size:15px;min-height:46px;}
+#publicSite .auth-pane input[type=checkbox] {accent-color:var(--px-blue);min-height:0;}
+#publicSite .auth-line {gap:12px;flex-wrap:wrap;}
+#publicSite .auth-line a,#publicSite .auth-back {color:var(--px-blue);}
+#publicSite .auth-divider span {background:var(--px-border);}
+#publicSite .auth-providers button {background:#fff!important;color:var(--px-text)!important;border-color:var(--px-border)!important;border-radius:6px;}
+#publicSite .professional-footer {max-width:1400px;margin:auto;padding:26px 4%;border-top:1px solid var(--px-border);display:flex;gap:24px;justify-content:space-between;align-items:center;font-size:12px;color:var(--px-muted);}
+#publicSite .professional-footer a {color:var(--px-text);text-decoration:none;}
+/* Existing workspace controls retain image sizing, hidden states and both themes. */
+#appShell {font-family:Inter,Arial,system-ui,sans-serif;}
+#appShell .page-head h1 {font-weight:500;letter-spacing:-.035em;}
+#appShell .panel {border-radius:10px;box-shadow:0 3px 18px #00000008;}
+#appShell .nav-item {min-height:44px;font-size:13px;border-radius:6px;}
+#appShell .studio-grid {grid-template-columns:280px minmax(0,1fr);gap:18px;}
+#appShell .studio-grid>.adjust-panel {grid-column:1/-1;display:block;}
+#appShell .studio-grid>.adjust-panel [data-adjust-pane=adjust] {display:flex;gap:12px;flex-wrap:wrap;}
+#appShell .adjust-card {flex:1 1 150px;margin-bottom:0;}
+#appShell .field-title {font-size:12px;line-height:1.5;}
+#appShell .notes,#appShell .chip,#appShell .tiny-btn {font-size:12px;}
+#appShell .scene-pick {font-size:10px;min-height:60px;}
+#appShell .control-panel,#appShell .canvas-panel,#appShell .adjust-panel {padding:16px;min-width:0;}
+#appShell .canvas-image.awaiting-source {min-height:420px;}
+#appShell .gallery {grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr));}
+#appShell .result-edit-dock {border-radius:8px;padding:16px;}
+#appShell .edit-tool-row {flex-wrap:wrap;}
+#appShell .topbar {gap:12px;}
+#appShell .top-actions {flex-shrink:0;}
+#appShell .studio-hero {height:145px;background:var(--panel);border:1px solid var(--stroke);border-radius:10px;}
+#appShell .studio-hero>img,#appShell .studio-hero .scene-strip {display:none;}
+#appShell .studio-hero:after {display:none;}
+#appShell .studio-hero-copy {padding:24px;position:relative;max-width:700px;}
+#appShell .studio-hero-copy h1 {font-size:30px;font-weight:500;line-height:1.15;color:var(--text)!important;letter-spacing:-.03em;}
+#appShell .studio-hero-copy h1 br {display:none;}
+#appShell .studio-hero-copy h1 span {color:var(--text)!important;}
+#appShell .studio-hero-copy h1 span {margin-left:.2em;}
+#appShell .studio-hero-copy p {font-size:13px;color:var(--muted)!important;max-width:600px;}
+#appShell .studio-ready-pill {font-size:10px;}
+#appShell .field-title {color:var(--text);margin:18px 0 9px;}
+#appShell .scene-picker {grid-template-columns:repeat(3,minmax(0,1fr));}
+#appShell .scene-pick small {font-size:8px;color:var(--muted);}
+#appShell .scene-pick.active:after {display:none;}
+#appShell .studio-source-upload {grid-template-columns:44px minmax(0,1fr);padding:12px;}
+#appShell .studio-source-thumb {width:44px;height:44px;}
+#appShell .studio-source-copy b {font-size:12px;}
+#appShell .studio-source-copy small {font-size:10px;white-space:normal;line-height:1.5;}
+#appShell .studio-source-btn {grid-column:1/-1;min-height:36px;font-size:12px;}
+#appShell .auto-brief {padding:14px;}
+#appShell .auto-brief b {font-size:12px;}
+#appShell .auto-brief p {font-size:12px;color:var(--muted);line-height:1.65;}
+#appShell .auto-brief em {font-size:8px;}
+#appShell .scene-insight {grid-template-columns:1fr;}
+#appShell .scene-insight b,#appShell .scene-insight small {font-size:10px;color:var(--muted);}
+#appShell .finish-note {font-size:10px;line-height:1.6;}
+#appShell .switch-line {font-size:12px;}
+#appShell .render-btn-v4 {font-size:14px;min-height:46px;}
+#appShell .primary-btn {background:#2758da!important;color:#fff!important;border-color:#2758da;box-shadow:none;border-radius:7px;}
+#appShell .edit-dock-head b {font-size:14px;color:var(--text);}
+#appShell .edit-dock-head small {font-size:12px;line-height:1.5;}
+#appShell .edit-tool-row button,#appShell .edit-tool-row label {font-size:12px;min-height:36px;}
+#appShell .edit-reference-row .upload-mini,#appShell .edit-reference-row .upload-mini span {font-size:11px;}
+html[data-theme=light] #appShell .auto-brief,html[data-theme=light] #appShell .canvas-image.awaiting-source {background:#f5f6f3;}
+html[data-theme=light] #appShell .unified-studio-toolbar {background:#fff;border-color:#dfe3e8;box-shadow:none;color:var(--text);}
+html[data-theme=light] #appShell .ust-status-badge {background:#edf2fc;color:#315280;border-color:#d8e2f3;}
+html[data-theme=light] #appShell .ust-title,html[data-theme=light] #appShell .ust-dim {color:#315280;}
+html[data-theme=light] #appShell .ust-btn:not(.ust-btn-primary) {background:#f6f8fb;color:#354458;border-color:#d8e0eb;}
+html[data-theme=light] #appShell .ust-btn-comments.active {background:#2758da;color:#fff;}
+html[data-theme=light] #appShell .ust-view-modes {background:#f2f4f7;}
+html[data-theme=light] #appShell .ust-view-modes button {color:#4b596a;}
+html[data-theme=light] #appShell .ust-view-modes button.active {background:#2758da;color:#fff;}
+html[data-theme=light] #appShell .render-anchor {background:linear-gradient(0deg,#fff 85%,#ffffff00);}
+html[data-theme=light] #appShell .result-edit-dock {background:#f7f8fa;border-color:#dfe3e8;}
+html[data-theme=light] #appShell .edit-tool-row button,html[data-theme=light] #appShell .edit-tool-row label {background:#fff;color:#354458;border-color:#cdd6e3;}
+html[data-theme=light] #appShell .edit-tool-row button.active {background:#eaf0ff;color:#2758da;border-color:#a9bff2;}
+html[data-theme=light] #appShell .view-root {background:#f8f9f7;}
+html[data-theme=light] #appShell .sidebar,html[data-theme=light] #appShell .panel {background:#fff;}
+html[data-theme=light] #appShell .topbar {background:#fff;border-color:#e0e4e8;}
+html[data-theme=light] #appShell .nav-item.active {background:#eaf0ff;border-color:#ccd8f5;color:#2758da;box-shadow:none;}
+#publicSite :is(button,a,input):focus-visible,#appShell :is(button,a,input,textarea,select):focus-visible {outline:3px solid #2758da;outline-offset:3px;}
+[hidden] {display:none!important;}
+@media(max-width:1100px){#publicSite .public-hero{gap:32px;grid-template-columns:1fr 1fr;}#publicSite .public-nav{gap:14px;}#publicSite .professional-visual>img{height:460px;}#publicSite .professional-entry{grid-template-columns:1fr 1fr;gap:30px;padding:35px;}}
+@media(max-width:900px){#publicSite .public-hero{grid-template-columns:1fr;gap:35px;min-height:0;}#publicSite .public-copy{max-width:700px;}#publicSite .professional-visual>img{height:400px;}#publicSite .public-showcase{grid-template-columns:1fr;gap:25px;}#appShell .studio-grid{grid-template-columns:1fr;}#appShell .control-panel{position:static;}#appShell .adjust-card{flex-basis:180px;}}
+@media(max-width:720px){#publicSite .public-header{padding:12px 16px;gap:10px;}#publicSite .public-brand small{font-size:8px;letter-spacing:.08em;}#publicSite .public-brand b{font-size:16px;}#publicSite .public-signin,#publicSite .public-menu-review{padding:0 10px;}#publicSite .public-nav{border-color:var(--px-border);gap:5px 24px;}#publicSite .public-main{padding:38px 20px 45px;}#publicSite .public-copy h1{font-size:clamp(42px,10vw,64px);}#publicSite .public-copy p{font-size:16px;}#publicSite .public-strip{grid-template-columns:1fr 1fr;gap:12px;}#publicSite .public-strip article{padding:20px;}#publicSite .professional-entry{grid-template-columns:1fr;padding:26px 18px;gap:24px;}#publicSite .public-section,#publicSite .public-showcase,#publicSite .professional-entry{margin-top:65px;}#publicSite .professional-footer{flex-wrap:wrap;padding:24px 20px;}#appShell .canvas-image.awaiting-source{min-height:320px;}#appShell .top-actions .credit-btn{display:flex;}#appShell .top-actions .credit-btn b{display:inline;font-size:10px;}#appShell .search-box{min-width:0;}}
+@media(max-width:480px){#publicSite .public-strip{grid-template-columns:1fr;}#publicSite .professional-visual>img{height:330px;}#publicSite .professional-visual figcaption{left:12px;right:12px;bottom:12px;padding:15px;}#publicSite .public-gallery img,#publicSite .public-gallery img:first-child{height:160px;}#publicSite .auth-card{padding:22px 18px;}#publicSite .public-trust{max-width:330px;}#appShell .view-root{padding:10px;}#appShell .studio-grid{gap:12px;}#appShell .user-menu{padding:4px;}#appShell .search-box{max-width:42vw;}#appShell .studio-hero{height:auto;min-height:170px;}#appShell .studio-ready-pill{position:static;display:inline-block;margin:0 24px 20px;}#appShell .studio-hero-copy h1{font-size:25px;}#appShell .edit-dock-head{flex-wrap:wrap;gap:10px;}}
+@media(prefers-reduced-motion:reduce){#publicSite *,#appShell *{scroll-behavior:auto!important;transition:none!important;animation:none!important;}}

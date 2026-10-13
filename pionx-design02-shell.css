@@ -1,0 +1,44 @@
+/* Full platform Design 02: original module templates and IDs remain intact. */
+#appShell.d02-shell{--d02-sidebar-width:246px;padding-inline-start:var(--d02-sidebar-width)!important;min-width:0;background:var(--bg)!important;}
+#appShell.d02-shell>.topbar{min-height:72px!important;padding:16px 28px!important;gap:18px!important;}
+#appShell.d02-shell>.topbar>.brand,#appShell.d02-shell #mainNav{display:none!important;}
+#appShell.d02-shell>.topbar .search-box{margin-inline-start:0!important;max-width:480px!important;flex:1!important;}
+#appShell.d02-shell>.topbar .top-actions{margin-inline-start:auto!important;}
+#appShell.d02-shell>.workspace{min-width:0;width:100%!important;}
+#appShell.d02-shell #viewRoot{padding:28px!important;min-width:0;}
+#appShell .d02-sidebar{position:fixed;inset-block:0;inset-inline-start:0;width:246px;z-index:1150;background:var(--panel,#fff);border-inline-end:1px solid var(--stroke,#dce2e9);display:flex;flex-direction:column;overflow:hidden;}
+#appShell .d02-sidebar[hidden],#appShell .d02-nav-section[hidden],#appShell .d02-nav-link[hidden],#appShell .d02-sidebar-shade[hidden]{display:none!important;}
+.d02-brand{display:flex;align-items:center;gap:14px;padding:27px 24px 23px;text-decoration:none;color:var(--text);font-size:22px;font-weight:700;letter-spacing:-.04em;flex-shrink:0;}
+.d02-brand img{width:31px;height:40px;object-fit:contain;}
+.d02-brand b{color:var(--violet,#165dcc);font-weight:500;}
+.d02-brand small{display:block;letter-spacing:.09em;color:var(--muted);font-size:8px;margin-top:5px;font-weight:500;}
+.d02-nav{overflow-y:auto;overscroll-behavior:contain;flex:1;padding:0 14px 24px;scrollbar-width:thin;}
+.d02-nav-section{margin-top:18px;}
+.d02-nav-section h2{font:600 10px/1.5 Inter,system-ui,sans-serif;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;padding:0 12px;margin:0 0 8px;}
+.d02-nav-link{display:flex;align-items:center;gap:11px;min-height:42px;padding:10px 12px;color:var(--muted);text-decoration:none;border-radius:8px;border:1px solid transparent;font-size:12px;font-weight:500;line-height:1.6;}
+.d02-nav-link:hover{background:var(--panel2);color:var(--text);}
+.d02-nav-link.active{background:color-mix(in srgb,var(--violet) 12%,transparent);color:var(--violet);border-color:color-mix(in srgb,var(--violet) 25%,transparent);}
+.d02-nav-icon{width:20px;font-size:18px;text-align:center;flex:none;line-height:1;}
+.d02-side-footer{border-top:1px solid var(--stroke);padding:14px 24px;display:flex;gap:18px;flex:none;}
+.d02-side-footer a{font-size:11px;color:var(--muted);text-decoration:none;}
+.d02-menu-toggle{display:none;}
+.d02-sidebar-shade{position:fixed;inset:0;z-index:1140;border:0;background:#101a2d80;}
+#appShell .d02-nav-link:focus-visible,#appShell .d02-brand:focus-visible,#appShell .d02-menu-toggle:focus-visible{outline:3px solid var(--violet);outline-offset:2px;}
+html[lang="ar"] .d02-nav-section h2{font-family:Tajawal,system-ui,sans-serif;font-size:12px;letter-spacing:0;}
+html[lang="ar"] .d02-nav-link{font-size:14px;}
+@media(min-width:1600px){#appShell.d02-shell #viewRoot>.page{max-width:1540px;margin-inline:auto;}}
+@media(max-width:1180px) and (min-width:901px){#appShell.d02-shell{--d02-sidebar-width:218px;}.d02-sidebar{width:218px!important;}.d02-brand{padding-inline:20px;}.d02-nav{padding-inline:10px;}#appShell.d02-shell #viewRoot{padding:20px!important;}}
+@media(max-width:900px){
+ #appShell.d02-shell{padding-inline-start:0!important;}
+ #appShell .d02-sidebar{transform:translateX(-100%);transition:transform .18s ease;width: min(290px,85vw);box-shadow:0 10px 35px #101a2d30;}
+ html[dir="rtl"] #appShell .d02-sidebar{transform:translateX(100%);}
+ #appShell .d02-sidebar.d02-open{transform:translateX(0);}
+ .d02-menu-toggle{display:inline-grid;place-items:center;border:1px solid var(--stroke);border-radius:8px;width:40px;height:40px;background:var(--panel);color:var(--text);flex:none;font-size:19px;}
+ #appShell.d02-shell>.topbar{padding:12px 16px!important;gap:10px!important;}
+ #appShell.d02-shell>.topbar .search-box{order:3;flex-basis:100%!important;max-width:none!important;}
+ #appShell.d02-shell>.topbar .top-actions{width:auto!important;}
+ #appShell.d02-shell #viewRoot{padding:18px!important;}
+}
+@media(max-width:480px){#appShell.d02-shell #viewRoot{padding:12px!important;}#appShell.d02-shell .user-menu{padding-inline:5px!important;}#appShell.d02-shell .top-actions{gap:4px!important;}}
+@media(prefers-reduced-motion:reduce){#appShell .d02-sidebar{transition:none;}}
+@media print{#appShell.d02-shell{padding-inline-start:0!important;}#appShell .d02-sidebar,#appShell .d02-sidebar-shade{display:none!important;}}

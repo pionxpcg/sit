@@ -1,0 +1,53 @@
+Options -Indexes
+RewriteEngine On
+
+# Reject TRACE/TRACK and hidden-file probes early.
+RewriteCond %{REQUEST_METHOD} ^(?:TRACE|TRACK)$ [NC]
+RewriteRule .* - [F,L]
+RewriteRule (^|/)\. - [F,L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "DENY"
+  Header always set X-Permitted-Cross-Domain-Policies "none"
+  Header always set Cross-Origin-Opener-Policy "same-origin-allow-popups"
+  Header always set Permissions-Policy "camera=(), microphone=(self), geolocation=(), payment=(), usb=(), browsing-topics=()"
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; media-src 'self' https: blob:; connect-src 'self' https: wss:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests"
+
+  # Never allow the staging copy to enter search indexes.
+  SetEnvIf Request_URI "^/test(?:/|$)" PIONX_STAGING=1
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive" env=PIONX_STAGING
+</IfModule>
+
+# Keep sensitive deployment/source files unreachable if they are ever copied here.
+<FilesMatch "(?i)^(?:\.env(?:\..*)?|pionx\.env|composer\.(?:json|lock)|package-lock\.json|yarn\.lock|pnpm-lock\.yaml|.*\.(?:log|jsonl|sql|bak|old|orig|swp))$">
+  Require all denied
+</FilesMatch>
+
+# R16.10 static-delivery performance hardening. HTML stays fresh; versioned
+# CSS/JS/media can be cached safely and the render video is lazy-started by JS.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType text/javascript "access plus 7 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType video/mp4 "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 30 days"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:html?)$">
+    Header always set Cache-Control "no-cache, no-store, must-revalidate"
+  </FilesMatch>
+  <FilesMatch "\.(?:css|js)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.(?:png|jpe?g|webp|svg|mp4|woff2)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+</IfModule>

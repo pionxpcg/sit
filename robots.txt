@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /server/
+Disallow: /generated/
+Disallow: /uploads/
+Sitemap: https://pionxai.pcggp.com/sitemap.xml

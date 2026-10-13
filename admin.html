@@ -1,0 +1,1269 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#060911" />
+  <title>PIONX AI — Architecture Intelligence Workspace</title>
+  <meta name="description" content="PIONX AI is a professional architecture workspace for image rendering, visual consistency, motion, project boards and client presentations." />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="canonical" href="https://pionxai.pcggp.com/" />
+
+  <!-- SECURITY POLICIES -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; media-src 'self' https: blob:; connect-src 'self' https: wss:; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none';" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=(), payment=()" />
+
+  <script src="pionx-theme-init-r16101.js?v=20261012-r1617"></script>
+
+  <link rel="icon" type="image/png" href="assets/pionx-logo-transparent-r16.png" />
+
+  <!-- Preconnects -->
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="preconnect" href="https://assets.mixkit.co" />
+
+  <!-- Base App Stylesheets -->
+  <link rel="stylesheet" href="pionx-main/app-v68.css?v=16.12.9-styles-restore" />
+  <link rel="stylesheet" href="pionx-main/film-v624.css?v=16.12.9-styles-restore" />
+  <link rel="stylesheet" href="pionx-professional-r13.css?v=16.9.2" />
+
+  <!-- FULL RESPONSIVE SYSTEM: TOP-NAV, DAY/DARK THEME & FULL RTL -->
+  <style id="pionxFullEvolutionEngine">
+    :root {
+      --bg-base: #060911;
+      --bg-surface: #0b1120;
+      --bg-card: rgba(15, 23, 42, 0.85);
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-focus: rgba(56, 189, 248, 0.5);
+      --accent-cyan: #38bdf8;
+      --accent-blue: #2563eb;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --topbar-bg: rgba(6, 9, 17, 0.9);
+      --shadow-ambient: 0 20px 45px rgba(0, 0, 0, 0.7);
+    }
+
+    /* DAY / LIGHT MODE VARIABLES */
+    [data-theme="light"] {
+      --bg-base: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-card: #ffffff;
+      --border-subtle: rgba(0, 0, 0, 0.08);
+      --border-focus: rgba(2, 132, 199, 0.4);
+      --accent-cyan: #0284c7;
+      --accent-blue: #1d4ed8;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --topbar-bg: rgba(255, 255, 255, 0.9);
+      --shadow-ambient: 0 10px 30px rgba(0, 0, 0, 0.06);
+    }
+
+    * { box-sizing: border-box !important; -webkit-font-smoothing: antialiased; }
+    [hidden] { display: none !important; }
+
+    html, body {
+      background-color: var(--bg-base) !important;
+      color: var(--text-main);
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* RTL ARABIC STYLING */
+    [dir="rtl"] { direction: rtl; text-align: right; }
+    [dir="rtl"] .top-actions { margin-right: auto; margin-left: 0; }
+    [dir="rtl"] .nav-scroll { flex-direction: row-reverse !important; }
+    [dir="rtl"] .search-box input { text-align: right; }
+
+    /* ================= 1. WORKSPACE TOP NAVIGATION (FULL WIDTH) ================= */
+    .app-shell:not([hidden]) {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100vh !important;
+      overflow: hidden !important;
+      background-color: var(--bg-base) !important;
+    }
+
+    .workspace {
+      flex: 1 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      width: 100% !important;
+      overflow: hidden !important;
+    }
+
+    .topbar {
+      height: 64px !important;
+      background: var(--topbar-bg) !important;
+      backdrop-filter: blur(20px) !important;
+      border-bottom: 1px solid var(--border-subtle) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding: 0 24px !important;
+      z-index: 100 !important;
+    }
+
+    /* TRANSFORM SIDEBAR INTO A SLEEK HORIZONTAL TOP SUB-NAV */
+    .sidebar {
+      width: 100% !important;
+      min-width: 100% !important;
+      height: 52px !important;
+      min-height: 52px !important;
+      background: var(--bg-surface) !important;
+      border-right: none !important;
+      border-bottom: 1px solid var(--border-subtle) !important;
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      padding: 0 20px !important;
+      overflow-x: auto !important;
+      overflow-y: hidden !important;
+      z-index: 90 !important;
+    }
+
+    .sidebar .brand,
+    .sidebar .nav-title,
+    .sidebar .plan-card,
+    .sidebar > .plan-card {
+      display: none !important;
+    }
+
+    .sidebar .nav-scroll {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 0 !important;
+      overflow-x: auto !important;
+      white-space: nowrap !important;
+    }
+
+    .sidebar .nav-section {
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 4px !important;
+    }
+
+    .sidebar .nav-item {
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 6px !important;
+      padding: 6px 14px !important;
+      border-radius: 8px !important;
+      color: var(--text-muted) !important;
+      text-decoration: none !important;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      border: 1px solid transparent !important;
+      white-space: nowrap !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .sidebar .nav-item:hover,
+    .sidebar .nav-item.active {
+      background: rgba(56, 189, 248, 0.12) !important;
+      color: var(--accent-cyan) !important;
+      border-color: rgba(56, 189, 248, 0.3) !important;
+    }
+
+    .sidebar .nav-item em { display: none !important; }
+
+    /* ================= 2. COMPACT & REFINED HERO BANNER ================= */
+    .view-root {
+      flex: 1 !important;
+      overflow-y: auto !important;
+      padding: 24px 32px 60px !important;
+      max-width: 1600px !important;
+      margin: 0 auto !important;
+      width: 100% !important;
+    }
+
+    /* FIXING THE BANNER (220px COMPACT HEIGHT, NEVER CLIPPED) */
+    .view-root :is(.hero,.studio-hero,.flow-hero,.presentation-hero,.consistency-hero,.portfolio-hero,.video-hero,.film-hero,.home-hero),
+    .view-root .workspace-banner {
+      max-height: 220px !important;
+      height: 220px !important;
+      border-radius: 20px !important;
+      overflow: hidden !important;
+      position: relative !important;
+      margin-bottom: 30px !important;
+      border: 1px solid var(--border-subtle) !important;
+      box-shadow: var(--shadow-ambient) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      padding: 0 40px !important;
+    }
+
+    .view-root :is(.hero,.studio-hero,.flow-hero,.presentation-hero,.consistency-hero,.portfolio-hero,.video-hero,.film-hero,.home-hero)::before,
+    .view-root .workspace-banner::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(6, 9, 17, 0.95) 0%, rgba(6, 9, 17, 0.5) 65%, transparent 100%);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    [data-theme="light"] .view-root :is(.hero,.studio-hero,.flow-hero,.presentation-hero,.consistency-hero,.portfolio-hero,.video-hero,.film-hero,.home-hero)::before,
+    [data-theme="light"] .view-root .workspace-banner::before {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.5) 65%, transparent 100%);
+    }
+
+    .view-root :is(.hero,.studio-hero,.flow-hero,.presentation-hero,.consistency-hero,.portfolio-hero,.video-hero,.film-hero,.home-hero) img,
+    .view-root .workspace-banner img {
+      position: absolute !important;
+      top: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      object-position: center 35% !important;
+      z-index: 0 !important;
+    }
+
+    .view-root :is(.hero,.studio-hero,.flow-hero,.presentation-hero,.consistency-hero,.portfolio-hero,.video-hero,.film-hero,.home-hero) h1,
+    .view-root :is(.hero,.studio-hero,.flow-hero,.presentation-hero,.consistency-hero,.portfolio-hero,.video-hero,.film-hero,.home-hero) h2,
+    .view-root .workspace-banner h1,
+    .view-root .workspace-banner h2 {
+      position: relative !important;
+      z-index: 2 !important;
+      font-size: 2.1rem !important;
+      line-height: 1.15 !important;
+      margin: 0 !important;
+      color: var(--text-main) !important;
+      font-weight: 800 !important;
+    }
+
+    .view-root :is(.hero,.studio-hero,.flow-hero,.presentation-hero,.consistency-hero,.portfolio-hero,.video-hero,.film-hero,.home-hero) p,
+    .view-root :is(.hero,.studio-hero,.flow-hero,.presentation-hero,.consistency-hero,.portfolio-hero,.video-hero,.film-hero,.home-hero) small,
+    .view-root .workspace-banner p,
+    .view-root .workspace-banner small {
+      position: relative !important;
+      z-index: 2 !important;
+      font-size: 13px !important;
+      color: var(--accent-cyan) !important;
+      margin-bottom: 6px !important;
+      letter-spacing: 1px !important;
+      font-weight: 700 !important;
+      text-transform: uppercase !important;
+    }
+
+    /* ================= 3. CARDS ANIMATIONS & LIVE VIDEO ON CARD ================= */
+    .view-root .feature-grid {
+      display: grid !important;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)) !important;
+      gap: 24px !important;
+    }
+
+    .view-root .feature-card,
+    .view-root .workflow-card,
+    .view-root article.feature-card {
+      background: var(--bg-card) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 18px !important;
+      overflow: hidden !important;
+      display: flex !important;
+      flex-direction: column !important;
+      backdrop-filter: blur(14px) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+      position: relative !important;
+      cursor: pointer !important;
+      animation: cardEntrance 0.5s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.35s ease !important;
+    }
+
+    .view-root .feature-card:hover,
+    .view-root .workflow-card:hover,
+    .view-root article.feature-card:hover {
+      transform: translateY(-8px) scale(1.015) !important;
+      border-color: var(--border-focus) !important;
+      box-shadow: 0 20px 45px -10px rgba(0, 0, 0, 0.8), 0 0 25px rgba(56, 189, 248, 0.2) !important;
+    }
+
+    @keyframes cardEntrance {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .inside-media-wrap {
+      position: relative !important;
+      width: 100% !important;
+      height: 180px !important;
+      overflow: hidden !important;
+      background: #000 !important;
+      pointer-events: none !important;
+    }
+
+    .inside-media-wrap img,
+    .inside-media-wrap video {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+
+    .view-root .feature-card:hover .inside-media-wrap img,
+    .view-root .feature-card:hover .inside-media-wrap video {
+      transform: scale(1.08) !important;
+    }
+
+    .inside-card-badge {
+      position: absolute !important;
+      top: 12px !important;
+      right: 12px !important;
+      background: rgba(6, 9, 17, 0.85) !important;
+      border: 1px solid rgba(255, 255, 255, 0.15) !important;
+      color: #fff !important;
+      font-size: 10px !important;
+      font-weight: 700 !important;
+      padding: 4px 10px !important;
+      border-radius: 20px !important;
+      z-index: 10 !important;
+      backdrop-filter: blur(8px) !important;
+    }
+
+    /* THEME TOGGLE & LANG BUTTONS */
+    .icon-btn, .lang-btn {
+      background: rgba(255, 255, 255, 0.08) !important;
+      border: 1px solid var(--border-subtle) !important;
+      color: var(--text-main) !important;
+      padding: 6px 12px !important;
+      border-radius: 20px !important;
+      font-size: 12.5px !important;
+      font-weight: 700 !important;
+      cursor: pointer !important;
+      transition: all 0.2s ease !important;
+    }
+
+    .icon-btn:hover, .lang-btn:hover {
+      background: rgba(56, 189, 248, 0.15) !important;
+      border-color: var(--accent-cyan) !important;
+      color: var(--accent-cyan) !important;
+    }
+
+    /* ================= 4. AUTHENTICATION (CLEAN & ERROR-FREE) ================= */
+    .professional-entry {
+      background: transparent !important;
+      max-width: 460px !important;
+      margin: 60px auto 100px !important;
+      padding: 0 20px !important;
+      display: flex !important;
+      justify-content: center !important;
+    }
+    .professional-entry > div { display: none !important; }
+
+    .auth-card {
+      background: var(--bg-card) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 24px !important;
+      padding: 36px 32px !important;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8) !important;
+      backdrop-filter: blur(24px) !important;
+      width: 100% !important;
+      max-width: 440px !important;
+    }
+
+    .auth-head { text-align: center !important; margin-bottom: 24px !important; display: flex !important; flex-direction: column !important; align-items: center !important; gap: 8px !important; }
+    .auth-head b { font-size: 20px !important; color: var(--text-main) !important; }
+    .auth-head small { font-size: 13px !important; color: var(--text-muted) !important; }
+
+    .auth-tabs {
+      display: flex !important;
+      background: rgba(0, 0, 0, 0.4) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 12px !important;
+      padding: 4px !important;
+      gap: 4px !important;
+      margin-bottom: 24px !important;
+    }
+
+    .auth-tabs button {
+      flex: 1 !important;
+      background: transparent !important;
+      border: none !important;
+      color: var(--text-muted) !important;
+      padding: 10px !important;
+      border-radius: 8px !important;
+      font-size: 13.5px !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+    }
+
+    .auth-tabs button.active {
+      background: rgba(255, 255, 255, 0.12) !important;
+      color: #fff !important;
+    }
+
+    .auth-pane:not([hidden]) { display: flex !important; flex-direction: column !important; gap: 16px !important; }
+    .auth-pane label { display: flex !important; flex-direction: column !important; gap: 6px !important; font-size: 13px !important; font-weight: 600 !important; color: #cbd5e1 !important; }
+
+    .auth-pane input[type="text"],
+    .auth-pane input[type="email"],
+    .auth-pane input[type="password"] {
+      width: 100% !important;
+      height: 48px !important;
+      background: rgba(10, 15, 26, 0.9) !important;
+      border: 1px solid var(--border-subtle) !important;
+      border-radius: 12px !important;
+      padding: 0 16px !important;
+      color: #ffffff !important;
+      font-size: 14px !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+
+    .auth-pane input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 1000px #0a0f1a inset !important;
+      -webkit-text-fill-color: #ffffff !important;
+    }
+
+    .auth-pane input:focus {
+      border-color: var(--accent-cyan) !important;
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.25) !important;
+    }
+
+    .pwd-input-wrap { position: relative !important; display: flex !important; align-items: center !important; width: 100% !important; }
+    .pwd-input-wrap input { padding-right: 46px !important; }
+    .eye-toggle-btn {
+      position: absolute !important; right: 12px !important; top: 50% !important; transform: translateY(-50%) !important;
+      background: transparent !important; border: none !important; color: var(--text-muted) !important;
+      cursor: pointer !important; padding: 6px !important; display: flex !important; align-items: center !important;
+    }
+    .eye-toggle-btn:hover { color: var(--accent-cyan) !important; }
+
+    .auth-line { display: flex !important; justify-content: space-between !important; align-items: center !important; width: 100% !important; }
+    .auth-line label { display: inline-flex !important; align-items: center !important; gap: 8px !important; font-size: 13px !important; color: var(--text-muted) !important; cursor: pointer !important; }
+    .auth-line input[type="checkbox"] { width: 16px !important; height: 16px !important; accent-color: var(--accent-cyan) !important; }
+
+    .gold-btn.full, #publicSignIn, #publicCreate {
+      width: 100% !important; height: 48px !important;
+      background: linear-gradient(135deg, #0284c7 0%, #2563eb 100%) !important;
+      border: none !important; color: #fff !important; font-size: 15px !important; font-weight: 700 !important;
+      border-radius: 12px !important; cursor: pointer !important; box-shadow: 0 4px 18px rgba(37, 99, 235, 0.4) !important;
+    }
+
+    /* ================= 5. BEFORE/AFTER SLIDER (PUBLIC SITE) ================= */
+    .mnml-hero-wrap { max-width: 1260px; margin: 0 auto; padding: 50px 24px 30px; text-align: center; }
+    .mnml-badge { display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 30px; color: var(--accent-cyan); font-size: 11.5px; font-weight: 700; text-transform: uppercase; margin-bottom: 20px; }
+    .mnml-hero-title { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; line-height: 1.12; margin: 0 auto 18px; max-width: 880px; }
+    .mnml-slider-box { max-width: 960px; margin: 0 auto; border-radius: 18px; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.12); position: relative; user-select: none; background: #000; height: 460px; }
+    .mnml-slider-under { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .mnml-slider-over { position: absolute; top: 0; left: 0; height: 100%; width: 50%; overflow: hidden; z-index: 2; border-right: 2px solid #ffffff; }
+    .mnml-slider-over img { position: absolute; top: 0; left: 0; height: 100%; width: 960px; max-width: none; object-fit: cover; }
+    .mnml-slider-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 42px; height: 42px; border-radius: 50%; background: #ffffff; color: #000; display: flex; align-items: center; justify-content: center; font-size: 16px; cursor: ew-resize; z-index: 10; border: 2px solid var(--accent-cyan); }
+    .mnml-slider-tag { position: absolute; bottom: 16px; padding: 5px 12px; background: rgba(0, 0, 0, 0.75); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 20px; font-size: 11px; font-weight: 700; z-index: 5; }
+    .tag-sketch { left: 16px; color: var(--text-muted); }
+    .tag-render { right: 16px; color: var(--accent-cyan); }
+  </style>
+<style id="pionxR14NavigationFix">
+#appShell #sidebar #mainNav{display:flex!important;width:100%;overflow-x:auto;}
+#appShell #themeBtn{display:inline-flex!important;align-items:center;justify-content:center;flex-shrink:0;}
+#mainNav .nav-section{display:flex;flex-wrap:nowrap;}
+#viewRoot.r14-workspace .studio-grid{display:grid!important;grid-template-columns:minmax(0,1fr) 300px!important;}
+@media(max-width:900px){#viewRoot.r14-workspace .studio-grid{grid-template-columns:minmax(0,1fr)!important;}#appShell .topbar{flex-wrap:wrap;height:auto;gap:12px;padding:12px;}#appShell .search-box{display:none;}#mainNav .nav-item{flex-shrink:0;}}
+</style>
+<link rel="stylesheet" href="pionx-workspace-r14.css?v=r14-12">
+<style id="pionxR14MobileFix">
+#appShell #sidebar{position:relative!important;inset:auto!important;transform:none!important;visibility:visible!important;flex-shrink:0;}
+#appShell .topbar .top-actions{position:static!important;inset:auto!important;transform:none!important;margin-left:auto;display:flex;align-items:center;gap:8px;}
+@media(max-width:900px){
+ #appShell .topbar{height:auto!important;min-height:64px!important;padding:12px 16px!important;gap:12px!important;flex-wrap:wrap!important;flex-shrink:0;}
+ #appShell .topbar .top-actions{width:100%;justify-content:flex-end;flex-wrap:nowrap;}
+ #appShell #sidebar{padding:0 12px!important;min-height:54px!important;height:54px!important;display:flex!important;}
+ #appShell #mainNav{width:100%;max-width:100%;}
+ #appShell .workspace{margin:0!important;padding:0!important;}
+ #appShell .view-root{padding:16px!important;}
+ .r14-header{flex-wrap:wrap;gap:12px;}.r14-tiles{grid-template-columns:1fr!important;}
+}
+</style><style id="pionxR15Design">.px-service-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .px-service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .px-service-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.px-service-card {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease;
+  outline-offset: 4px;
+}
+
+html[data-theme="dark"] .px-service-card {
+  background: #18181b;
+  color: #f4f4f5;
+  border: 1px solid #27272a;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+}
+
+html[data-theme="light"] .px-service-card {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.px-service-card:focus-visible {
+  outline: 2px solid #3b82f6;
+}
+
+.px-service-card:hover {
+  transform: translateY(-4px);
+}
+
+html[data-theme="dark"] .px-service-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+}
+
+html[data-theme="light"] .px-service-card:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.px-service-media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  position: relative;
+}
+
+html[data-theme="dark"] .px-service-media {
+  background: #27272a;
+}
+
+html[data-theme="light"] .px-service-media {
+  background: #f8fafc;
+}
+
+.px-service-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.px-service-card:hover .px-service-media img,
+.px-service-card:focus-visible .px-service-media img {
+  transform: scale(1.05);
+}
+
+.px-service-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.px-service-body h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.px-service-body p {
+  margin: 0 0 1.5rem;
+  font-size: 0.95rem;
+  opacity: 0.8;
+  line-height: 1.6;
+}
+
+.px-service-meta {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.px-service-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.px-service-arrow::after {
+  content: '→';
+  font-family: system-ui, sans-serif;
+  font-size: 1.2rem;
+}
+
+.px-service-card:hover .px-service-arrow,
+.px-service-card:focus-visible .px-service-arrow {
+  transform: translateX(6px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .px-service-card {
+    transition: none;
+  }
+  .px-service-card:hover {
+    transform: none;
+  }
+  .px-service-media img {
+    transition: none;
+  }
+  .px-service-card:hover .px-service-media img,
+  .px-service-card:focus-visible .px-service-media img {
+    transform: none;
+  }
+  .px-service-arrow {
+    transition: none;
+  }
+  .px-service-card:hover .px-service-arrow,
+  .px-service-card:focus-visible .px-service-arrow {
+    transform: none;
+  }
+}
+
+
+html[data-theme="light"]{--text-main:#172234;--text-muted:#46586b;--bg-card:#fff;--bg-surface:#f7f9fc;}
+html[data-theme="light"] #viewRoot :is(.field-title,.field-title span,.muted,.page-head p,.section-title p,.r14-header p,.r14-wb,.feature-toggle small,.admin-feature-main small,.finance612-status){color:#46586b!important;}
+html[data-theme="light"] #viewRoot :is(input:not([type="color"]),select,textarea){background-color:#fff!important;color:#172234!important;border-color:#cbd6e2!important;}
+html[data-theme="light"] #viewRoot :is(input,textarea)::placeholder{color:#52677d!important;}
+html[data-theme="light"] #viewRoot :is(.presentation-page-item615,.presentation-pages615 .presentation-page-actions615 button,.presentation-pages615 button:not(.primary-btn):not(.active)){background:#f4f7fb!important;color:#20354d!important;border-color:#d6e0eb!important;}
+html[data-theme="light"] #viewRoot .presentation-page-item615.active{background:#e8edff!important;color:#1e3a8a!important;border-color:#8eabed!important;}
+html[data-theme="light"] #viewRoot :is(.presentation-page-item615 small,.presentation-builder615 small,.presentation-builder614 label){color:#46586b!important;}
+html[data-theme="light"] #viewRoot :is(.presentation-page-item615 strong,.presentation-builder615 .field-title){color:#1c3048!important;}
+html[data-theme="light"] #viewRoot :is(.admin-panel,.finance612 .panel,.admin-feature-editor,.admin-feature-row,.film-step,.studioMultiCamera632){border-color:#d6e0eb;}
+html[data-theme="light"] #viewRoot :is(.comments-panel6328,.comments-filters6328,.comment-compose6328){background:#f6f8fc!important;color:#20354d!important;border-color:#d6e0eb!important;}
+html[data-theme="light"] #viewRoot :is(.comment-card-main6328 p,.comment-card-main6328 header b,.comments-panel6328 small,.comments-empty6328){color:#344a63!important;}
+html[data-theme="light"] #viewRoot .comment-actions6328 button{color:#365478!important;}
+html[data-theme="light"] #viewRoot .comment-actions6328 .danger{color:#a32131!important;}
+#mainNav .admin-nav[hidden]{display:none!important;}
+.px-service-grid{margin:24px 0 36px;}.px-service-card .px-service-body h3{color:inherit!important;}.px-service-card .px-service-body p{opacity:1;color:#b8c7db!important;}
+html[data-theme="light"] .px-service-card .px-service-body p{color:#46586b!important;}.px-service-card .px-service-meta{color:#80b4ff;}html[data-theme="light"] .px-service-card .px-service-meta{color:#2354b8;}
+.px-service-card .px-service-media img{display:block!important;position:static!important;width:100%!important;height:100%!important;object-fit:cover!important;}
+.px-service-card{min-width:0;}.px-service-card:focus-visible{outline:3px solid #2864d9;}
+@media(min-width:1024px){#viewRoot .px-service-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}@media(min-width:600px) and (max-width:1023px){#viewRoot .px-service-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+
+#pionxBuild6333{display:none!important;}
+
+html[data-theme="light"] #viewRoot .presentation-step614>b{color:#304966!important;}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet"><style id="pionxR16">:root{--px-ink:#edf2fc;--px-muted:#acb9ce;--px-surface:#111b2c;--px-line:#28374d;--px-accent:#7860ef;--px-shadow:0 20px 60px #0003}
+html[data-theme="light"]{--px-ink:#172234;--px-muted:#536176;--px-surface:#fff;--px-line:#e1e6ee;--px-shadow:0 20px 60px #17223412}
+body,button,input,textarea,select{font-family:'Inter','Tajawal',system-ui,sans-serif!important;-webkit-font-smoothing:antialiased}
+html[lang="ar"] body,html[lang="ar"] :is(button,input,textarea,select){font-family:'Tajawal','Inter',system-ui,sans-serif!important}
+h1,h2,h3,.px-nav-trigger,.px-home-title{font-family:'Sora','Tajawal',system-ui,sans-serif!important;letter-spacing:-.035em;line-height:1.25!important}
+html[lang="ar"] :is(h1,h2,h3,.px-nav-trigger){font-family:'Tajawal',sans-serif!important;letter-spacing:0}
+button,input,select{min-height:42px}button,a,input,select,textarea{outline-offset:4px}button:focus-visible,a:focus-visible{outline:2px solid #8a72ff!important}
+#appShell{grid-template-columns:minmax(0,1fr)!important;grid-template-rows:auto minmax(0,1fr)!important}
+#appShell>.topbar{display:flex!important;align-items:center;gap:24px!important;padding:16px 28px!important;height:auto!important;min-height:76px!important;overflow:visible!important;border-bottom:1px solid var(--px-line);z-index:1100;background:var(--px-surface)!important}
+.topbar .brand{flex:none}.topbar .brand small{display:none!important}.topbar .brand strong{font-size:18px!important;letter-spacing:-.04em}.topbar .logo-frame img{width:36px!important}
+#appShell>.sidebar{display:none!important}.topbar .search-box{max-width:190px!important;min-width:90px!important;margin-inline-start:auto!important;flex:1!important}.top-actions{gap:8px!important;margin-inline-start:0!important;flex:none}.top-actions .user-menu{max-width:150px}.top-actions .credit-btn{white-space:nowrap}
+#mainNav.px-navigation{display:flex!important;gap:6px!important;align-items:center!important;overflow:visible!important;width:auto!important;flex:none;padding:0!important;position:static!important}
+.px-navigation .nav-item,.px-nav-trigger{border:0!important;background:transparent!important;color:var(--px-ink)!important;font-size:14px!important;font-weight:600!important;border-radius:999px!important;min-height:44px;padding:10px 16px!important;white-space:nowrap;text-decoration:none;display:flex;gap:7px;align-items:center}
+.px-navigation .nav-item.active,.px-nav-trigger[aria-expanded="true"]{background:var(--px-ink)!important;color:var(--px-surface)!important}.px-nav-group{position:relative}.px-nav-trigger:hover,.px-navigation .nav-item:hover{background:color-mix(in srgb,var(--px-ink) 7%,transparent)!important}
+.px-dropdown{position:absolute;inset-block-start:calc(100% + 14px);inset-inline-start:0;width:340px;padding:12px;background:var(--px-surface);border:1px solid var(--px-line);border-radius:22px;box-shadow:var(--px-shadow);max-height:min(70vh,640px);overflow-y:auto;z-index:1200;animation:px-menu-in .18s ease-out}
+.px-dropdown[hidden]{display:none!important}.px-dropdown a,.px-dropdown button{display:flex;flex-direction:column;text-align:start;align-items:flex-start;width:100%;padding:13px 16px!important;color:var(--px-ink)!important;background:transparent!important;border:0!important;border-radius:12px!important;text-decoration:none;font-size:14px!important;font-weight:600!important;min-height:42px!important;gap:5px}
+.px-dropdown :is(a,button):hover{background:color-mix(in srgb,var(--px-accent) 10%,transparent)!important}.px-dropdown small{font-family:'Inter','Tajawal',sans-serif!important;color:var(--px-muted)!important;font-weight:400!important;font-size:12px!important;line-height:1.5}.px-dropdown .active{background:color-mix(in srgb,var(--px-accent) 12%,transparent)!important}.px-dropdown .px-nav-divider{border-top:1px solid var(--px-line);margin:9px 5px}
+.px-navigation .admin-nav[hidden],.account-popover .admin-nav[hidden]{display:none!important}
+#viewRoot{padding:28px!important;scroll-behavior:smooth}.r14-header,.px-workflow,.px-page-intro{background:var(--px-surface)!important;border:1px solid var(--px-line)!important;border-radius:20px!important;padding:24px!important;color:var(--px-ink)!important}.r14-header h2{font-size:28px!important}.r14-header p,.px-page-intro p{color:var(--px-muted)!important;font-size:14px!important;line-height:1.7!important}.r14-wb{background:transparent!important;border:0!important;padding:0 0 14px!important;color:var(--px-muted)!important}
+.px-home-intro{display:grid;grid-template-columns:1.2fr .8fr;gap:30px;padding:36px;border-radius:24px;border:1px solid var(--px-line);background:linear-gradient(120deg,var(--px-surface),color-mix(in srgb,var(--px-accent) 8%,var(--px-surface)));margin-bottom:28px;align-items:center}.px-home-intro small{color:var(--px-accent);font-weight:600;font-size:12px;letter-spacing:.08em}.px-home-title{font-size:clamp(28px,3.6vw,44px)!important;margin:12px 0!important;color:var(--px-ink)!important}.px-home-intro p{color:var(--px-muted);font-size:15px;line-height:1.8;max-width:590px}.px-home-intro img{width:100%;height:230px;object-fit:cover;border-radius:18px}.px-home-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}.px-home-actions a{padding:12px 20px;border-radius:999px;border:1px solid var(--px-line);font-size:13px;font-weight:600;color:var(--px-ink);text-decoration:none;background:var(--px-surface)}.px-home-actions a:first-child{background:var(--px-accent);color:white;border-color:transparent}
+#viewRoot .px-service-grid{gap:22px!important;margin:22px 0 34px!important}.px-service-card{border-radius:20px!important;border-color:var(--px-line)!important;box-shadow:none!important;background:var(--px-surface)!important;color:var(--px-ink)!important;transition:transform .22s,border-color .22s,box-shadow .22s!important}.px-service-card:hover{transform:translateY(-5px);box-shadow:var(--px-shadow)!important}.px-service-media{aspect-ratio:1.65!important}.px-service-body{padding:20px!important}.px-service-body h3{font-size:18px!important;font-weight:600!important}.px-service-body p{font-size:13px!important;line-height:1.75!important;color:var(--px-muted)!important}.px-service-meta{font-size:11px!important;font-weight:600!important;color:var(--px-accent)!important}
+.px-workflow{margin-bottom:22px;padding:16px 20px!important}.px-workflow header{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:13px}.px-workflow header b{font-size:13px}.px-workflow header span{font-size:12px;color:var(--px-muted)}.px-workflow ol{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:0;padding:0;list-style:none}.px-workflow li{display:flex;align-items:flex-start;gap:10px}.px-workflow li>span{display:grid;place-items:center;background:color-mix(in srgb,var(--px-accent) 12%,transparent);color:var(--px-accent);width:28px;height:28px;flex:none;border-radius:50%;font-size:11px;font-weight:700}.px-workflow li b{display:block;font-size:12px;color:var(--px-ink);margin:3px 0}.px-workflow li small{display:block;font-size:11px;color:var(--px-muted);line-height:1.6}
+#viewRoot :is(.panel,.film-step,.presentation-step614,.presentation-step615,.post-tools65){border-radius:16px!important;border-color:var(--px-line)!important}#viewRoot :is(.field-title,.section-title){line-height:1.6!important}#viewRoot label{line-height:1.55!important}html[data-theme="light"] #viewRoot :is(.presentation-step614>b,.presentation-step615>b,.film-step>b,.field-title,.muted){color:#435269!important}html[data-theme="light"] #viewRoot :is(.panel,.film-step,.presentation-step614){background-color:#fff!important;color:#172234!important}html[data-theme="light"] #viewRoot :is(.ghost-btn,.scene-pick,.scene-mini,.chip,.ust-view-btn){color:#34445c!important}html[data-theme="light"] #authStatus{color:#9d2534!important}.auth-status:not(:empty){padding:12px;background:color-mix(in srgb,var(--px-accent) 7%,transparent);border-radius:10px;line-height:1.6}
+.auth-card{border-radius:24px!important;padding:30px!important;max-width:440px!important;color:var(--px-ink)!important;background:var(--px-surface)!important;border-color:var(--px-line)!important;box-shadow:var(--px-shadow)!important}.auth-card :is(input,button){border-radius:12px!important;min-height:46px!important;font-size:14px!important}.auth-card label,.auth-card .auth-label{font-size:13px!important;line-height:1.6}.password-wrapper{position:relative}.password-wrapper input{padding-inline-end:48px!important}.eye-toggle-btn{position:absolute!important;inset-inline-end:6px!important;top:50%!important;transform:translateY(-50%)!important;min-width:38px!important;min-height:38px!important;padding:8px!important;background:transparent!important;color:var(--px-ink)!important;border:0!important;z-index:2}.auth-card :is(#publicSignIn,#publicCreate){background:var(--px-accent)!important;color:white!important;border:0!important}.auth-card #googleAuth{border:1px solid var(--px-line)!important;background:var(--px-surface)!important;color:var(--px-ink)!important}.auth-card a{color:var(--px-accent)!important}.auth-card :is(.auth-tabs,.auth-switch){gap:8px}.auth-card input{background:var(--px-surface)!important;color:var(--px-ink)!important;border:1px solid var(--px-line)!important}.auth-card input::placeholder{color:var(--px-muted)!important}.auth-card [hidden]{display:none!important}
+.px-info-panel{max-width:1024px;margin:40px auto;padding:0 24px;color:var(--px-ink)}.px-info-panel .px-page-intro{padding:42px!important}.px-info-panel h1{font-size:36px!important}.px-info-panel p{line-height:1.9!important;white-space:pre-line}.px-info-links{display:flex;gap:14px;flex-wrap:wrap;margin:24px 0}.px-info-links a{color:var(--px-accent);padding:12px 18px;border:1px solid var(--px-line);border-radius:12px;text-decoration:none}.px-site-form{display:grid;gap:18px;max-width:760px}.px-site-form label{display:grid;gap:8px;font-size:13px;font-weight:600}.px-site-form textarea{min-height:140px}.px-site-form input,.px-site-form textarea{width:100%;border:1px solid var(--px-line);padding:12px;border-radius:12px}.px-site-form button{width:max-content}.px-admin-shortcuts{display:flex;gap:10px;margin-bottom:20px;flex-wrap:wrap}.px-admin-shortcuts a{border:1px solid var(--px-line);padding:10px 16px;border-radius:999px;color:var(--px-ink);text-decoration:none;background:var(--px-surface);font-size:13px}.px-build-admin{padding:12px 16px;border:1px solid var(--px-line);border-radius:12px;color:var(--px-muted);font-size:12px;margin-top:20px}
+.px-site-footer{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:22px 0;color:var(--px-muted);font-size:12px;border-top:1px solid var(--px-line);margin-top:32px}.px-site-footer nav{display:flex;gap:20px}.px-site-footer a{color:inherit;text-decoration:none}
+.px-dropdown .nav-item{height:auto!important;min-height:70px!important;justify-content:flex-start!important;align-items:flex-start!important;text-align:start!important;line-height:1.5!important}.px-dropdown b{display:block!important;line-height:1.5!important}.px-dropdown small{white-space:normal!important;line-height:1.7!important}.px-nav-trigger[aria-expanded="true"]:hover{background:var(--px-ink)!important;color:var(--px-surface)!important}
+@keyframes px-menu-in{from{opacity:0;transform:translateY(-7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1150px){#appShell>.topbar{gap:12px!important;padding:12px 20px!important}.topbar .search-box{max-width:130px!important}.top-actions .user-menu>span:last-child{display:none}.px-navigation .nav-item,.px-nav-trigger{padding:10px 12px!important}}
+@media(max-width:900px){#appShell>.topbar{flex-wrap:wrap!important;gap:10px!important}.topbar .search-box{display:flex!important;order:3;max-width:none!important;margin:0!important;flex-basis:100%!important;height:38px!important}.top-actions{margin-inline-start:auto!important}.px-navigation{order:4;flex-basis:100%!important;justify-content:center}.px-nav-trigger{font-size:13px!important}.px-dropdown{position:fixed;inset-inline:16px;width:auto;inset-block-start:154px}.top-actions .credit-btn strong{display:none}.px-home-intro{grid-template-columns:1fr;padding:26px}.px-home-intro img{display:none}.px-workflow ol{grid-template-columns:repeat(2,minmax(0,1fr))}.px-workflow header{align-items:start}.px-workflow header span{max-width:180px}#viewRoot{padding:20px!important}}
+@media(max-width:600px){#appShell>.topbar{padding:10px 16px!important}.topbar .brand strong{font-size:16px!important}.top-actions{gap:4px!important}.top-actions .lang-btn,.top-actions .icon-btn{width:34px!important;padding:6px!important;min-height:34px!important}.top-actions .credit-btn{font-size:11px!important;padding:6px 8px!important}.px-navigation .nav-item,.px-nav-trigger{padding:8px 11px!important;min-height:36px!important}.px-navigation{gap:1px!important}.px-workflow header span{display:none}.px-workflow li small{font-size:10px}.px-workflow{padding:14px!important}#viewRoot{padding:16px!important}.px-home-title{font-size:28px!important}.px-home-intro{padding:24px}.px-site-footer{align-items:start;flex-direction:column}.px-service-body{padding:18px!important}.px-info-panel{margin:24px auto;padding:0 16px}.px-info-panel .px-page-intro{padding:26px!important}.px-info-panel h1{font-size:28px!important}}
+/* Use one document scroller; studio content must determine its own height. */
+html,body{height:auto!important;min-height:100%;overflow-x:clip!important;overflow-y:auto!important}
+#appShell{display:flex!important;flex-direction:column!important;height:auto!important;min-height:100dvh!important;overflow:visible!important}
+#appShell>.topbar{position:sticky!important;top:0!important;flex-shrink:0!important}
+#viewRoot{height:auto!important;min-height:0!important;overflow:visible!important;flex:1 0 auto!important;width:100%!important;box-sizing:border-box!important}
+#viewRoot.r14-workspace .studio-grid{grid-template-columns:minmax(0,1fr) 360px!important;grid-template-rows:auto auto!important;grid-template-areas:"canvas controls" "canvas adjust"!important;gap:24px!important;align-items:start!important}
+#viewRoot .studio-grid>.control-panel{height:auto!important;max-height:none!important;min-height:0!important;position:static!important;overflow:visible!important;padding:20px!important;background:var(--px-surface)!important;border:1px solid var(--px-line)!important;box-sizing:border-box!important;min-width:0!important}
+#viewRoot .studio-grid>.canvas-panel,#viewRoot .studio-grid>.adjust-panel{height:auto!important;max-height:none!important;position:static!important;min-width:0!important;box-sizing:border-box!important}
+#viewRoot .render-anchor{position:static!important;inset:auto!important;margin:18px 0 0!important;padding:14px 0 0!important;border-top:1px solid var(--px-line);background:transparent!important;width:100%!important;box-sizing:border-box!important;grid-template-columns:minmax(0,1fr) 44px!important;z-index:auto!important}
+#viewRoot .render-anchor .render-btn-v4{display:block!important;width:100%!important;height:auto!important;min-height:44px!important}
+.px-studio-prompt{display:grid;gap:12px;padding:16px;margin:16px 0;border:1px solid var(--px-line);border-radius:14px;background:color-mix(in srgb,var(--px-accent) 5%,var(--px-surface));min-width:0}
+.px-studio-prompt>div{display:flex!important;flex-direction:column!important;align-items:stretch!important;gap:10px!important;margin:0!important}
+.px-studio-prompt .field-title{font-size:13px!important;color:var(--px-ink)!important;line-height:1.65!important}
+.px-studio-prompt .muted{display:block;font-size:11px;color:var(--px-muted)!important}
+#viewRoot #btnAutoAnalyzePrompt{position:static!important;white-space:normal!important;min-height:42px!important;padding:10px 14px!important;line-height:1.5!important;border-radius:10px!important;flex-shrink:0!important}
+#viewRoot #studioNotes{display:block!important;position:static!important;width:100%!important;height:180px!important;min-height:150px!important;max-height:420px;box-sizing:border-box!important;resize:vertical!important;padding:14px!important;font-size:13px!important;line-height:1.75!important;background:var(--px-surface)!important;color:var(--px-ink)!important;border:1px solid var(--px-line)!important;border-radius:10px!important}
+#viewRoot .control-panel :is(.segmented,.toggle-row,.control-tabs){flex-wrap:wrap!important;gap:8px!important}
+#viewRoot .control-panel .scene-picker{gap:8px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
+#viewRoot .scene-pick{height:auto!important;min-height:76px!important;padding:10px 5px!important;font-size:11px!important;line-height:1.6!important}
+#viewRoot .scene-pick small{font-size:9px!important;line-height:1.5!important}
+#viewRoot .studio-input-router635,#viewRoot .post-tools65{background:var(--px-surface)!important;color:var(--px-ink)!important;border-color:var(--px-line)!important}
+#viewRoot .studio-input-status635{background:color-mix(in srgb,var(--px-accent) 7%,var(--px-surface))!important;border-color:var(--px-line)!important}
+#viewRoot .studio-input-status635 b{color:var(--px-ink)!important}#viewRoot .studio-input-status635 small{color:var(--px-muted)!important}
+@media(max-width:1100px){#viewRoot.r14-workspace .studio-grid{display:flex!important;flex-direction:column!important;gap:20px!important}#viewRoot .studio-grid>*{width:100%!important;min-width:0!important}#viewRoot .studio-grid>.control-panel{order:0!important}#viewRoot .studio-grid>.canvas-panel{order:1!important}#viewRoot .studio-grid>.adjust-panel{order:2!important}}
+@media(max-width:600px){#appShell>.topbar{position:static!important}.px-studio-prompt{padding:12px}.px-dropdown{inset-block-start:12px!important;max-height:calc(100dvh - 24px)!important}#viewRoot .studio-grid>.control-panel{padding:16px!important}#viewRoot .canvas-toolbar,#viewRoot .ust-topbar,#viewRoot .edit-tool-row{flex-wrap:wrap!important;height:auto!important;gap:8px!important}}
+#viewRoot .render-anchor:has(>button:only-child){display:flex!important;justify-content:flex-end!important}
+#viewRoot #studioAdvancedBtn{width:auto!important;padding:10px 14px!important;font-size:12px!important;color:var(--px-ink)!important;background:var(--px-surface)!important;border-color:var(--px-line)!important}
+#viewRoot .reference-row{display:grid!important;grid-template-columns:minmax(0,1fr) 52px 52px!important;gap:8px!important}
+#viewRoot .reference-row .ref-box{width:100%!important;height:auto!important;min-height:60px!important;box-sizing:border-box!important}
+#viewRoot .ref-box[aria-label]{color:var(--px-muted)!important;line-height:1.6!important;font-size:11px!important}
+#viewRoot .post-tools65 :is(p,small){color:var(--px-muted)!important}
+html[data-theme="light"] #studioMultiCamera632{background:var(--px-surface)!important;color:var(--px-ink)!important;border-color:var(--px-line)!important}
+html[data-theme="light"] #studioMultiCamera632 :is(h3,b){color:var(--px-ink)!important}
+html[data-theme="light"] #studioMultiCamera632 :is(p,small){color:var(--px-muted)!important}
+html[data-theme="light"] #studioMultiCamera632 :is(.studio-multicam-locks632 span,.studio-camera-presets632 span){background:#f6f7fc!important;color:#34445c!important;border-color:var(--px-line)!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+/* Studio: one ordered settings column and the original render action always in reach. */
+#viewRoot:has(.px-studio-actionbar){padding-bottom:120px!important}
+#viewRoot:has(.px-studio-actionbar)>.px-workflow{display:none!important}
+#viewRoot:has(.px-studio-actionbar) .r14-sh{padding:20px 24px!important;margin-bottom:20px!important}
+#viewRoot:has(.px-studio-actionbar) .render-anchor{display:none!important}
+#viewRoot.r14-workspace:has(.px-studio-actionbar) .studio-grid{grid-template-columns:minmax(0,1fr) 400px!important;gap:20px!important}
+#viewRoot .control-panel[data-px-organised]{display:flex!important;flex-direction:column!important;gap:14px!important;padding:16px!important}
+.px-studio-step{padding:16px;border:1px solid var(--px-line);border-radius:14px;background:var(--px-surface);min-width:0}
+.px-studio-step>h3{display:flex;align-items:center;gap:10px;margin:0 0 16px!important;font-size:14px!important;letter-spacing:-.01em!important;color:var(--px-ink)}
+.px-studio-step>h3>span{display:grid;place-items:center;width:27px;height:27px;border-radius:9px;background:color-mix(in srgb,var(--px-accent) 12%,var(--px-surface));color:var(--px-accent);font-size:12px;flex:none}
+#viewRoot .px-studio-step>.field-title{margin:14px 0 8px!important;line-height:1.6!important}
+#viewRoot .px-studio-step>h3+.field-title{margin-top:0!important}
+#viewRoot .px-studio-step .px-studio-prompt{padding:0;margin:0 0 14px;border:0;background:transparent}
+#viewRoot .px-studio-step #studioNotes{height:155px!important;min-height:130px!important}
+#viewRoot .px-studio-step .scene-pick{min-height:66px!important;padding:8px 4px!important}
+#viewRoot .px-studio-step .studio-input-router635{margin:12px 0 0!important}
+#viewRoot .px-studio-step .toggle-row{margin:14px 0 0!important}
+#viewRoot .px-studio-step .r14-details{margin:14px 0 0!important}
+#viewRoot .px-studio-step .finish-note{margin-top:12px!important}
+.px-studio-actionbar{position:fixed;inset-inline:24px;bottom:18px;z-index:100;display:flex;align-items:center;justify-content:space-between;gap:20px;max-width:1360px;margin:auto;padding:14px 20px;background:var(--px-surface);border:1px solid var(--px-line);border-radius:18px;box-shadow:0 8px 36px #071a3226;box-sizing:border-box}
+.px-studio-actioncopy{display:grid;gap:4px;min-width:0}.px-studio-actioncopy strong{font-size:14px;color:var(--px-ink)}.px-studio-actioncopy small{font-size:12px;color:var(--px-muted);line-height:1.6}
+.px-studio-actions{display:flex;align-items:center;gap:10px;flex:none}
+#viewRoot .px-studio-actionbar #demoGenerate{display:block!important;min-width:170px!important;min-height:46px!important;margin:0!important;position:static!important;white-space:nowrap;border-radius:12px!important}
+#viewRoot .px-studio-actionbar #studioAdvancedBtn{min-height:46px!important;margin:0!important;position:static!important;border:1px solid var(--px-line)!important;border-radius:12px!important}
+@media(max-width:600px){#viewRoot .control-panel[data-px-organised]{padding:12px!important;gap:12px!important}.px-studio-step{padding:14px}.px-studio-actionbar{inset-inline:0;bottom:0;border-radius:16px 16px 0 0;display:grid;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -4px 24px #071a321a}.px-studio-actioncopy strong{font-size:12px}.px-studio-actioncopy small{display:none}.px-studio-actions{width:100%;gap:8px}#viewRoot .px-studio-actionbar #demoGenerate{flex:1;min-width:0!important}#viewRoot .px-studio-actionbar #studioAdvancedBtn{font-size:11px!important;padding:10px!important}#viewRoot:has(.px-studio-actionbar){padding-bottom:132px!important}}
+@media(max-width:600px){.px-studio-actionbar{grid-template-columns:minmax(0,1fr);justify-content:stretch}.px-studio-actions{box-sizing:border-box}}
+/* The document owns scrolling; obsolete workspace containment must not trap wheel input. */
+html,body,#appShell,#viewRoot{overscroll-behavior:auto!important}
+#studioEditStage.awaiting-source{touch-action:pan-y!important}
+.logo-frame{background:transparent!important;box-shadow:none!important;border:0!important;border-radius:0!important}
+.logo-frame img{background:transparent!important;box-shadow:none!important;border:0!important;border-radius:0!important;object-fit:contain!important}
+body:has(>#pinPromptModal)::after{content:'';position:fixed;inset:0;background:rgba(9,18,35,.38);z-index:1800;backdrop-filter:blur(3px)}
+#pinPromptModal,#pinCardPopup{position:fixed!important;inset:auto!important;left:50%!important;top:50%!important;transform:translate(-50%,-50%)!important;width:min(400px,calc(100vw - 32px))!important;max-height:calc(100dvh - 40px);overflow:auto;box-sizing:border-box;padding:22px!important;background:var(--px-surface,#fff)!important;color:var(--px-ink,#142033)!important;border:1px solid var(--px-line,#dce3ed)!important;border-radius:18px!important;box-shadow:0 20px 70px #07132940!important;z-index:1801!important;font-family:'Inter','Tajawal',system-ui,sans-serif;font-size:14px;line-height:1.6}
+.pin-card-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}.pin-card-header b{font-size:16px;font-weight:600}.pin-card-header>button{display:grid;place-items:center;border:0;border-radius:9px;background:color-mix(in srgb,var(--px-ink) 6%,var(--px-surface));color:var(--px-ink);width:34px;height:34px;flex:none;cursor:pointer}
+#newPinCommentInput{display:block!important;box-sizing:border-box;width:100%!important;min-height:132px!important;margin:0!important;padding:12px 14px!important;border:1px solid var(--px-line,#dce3ed)!important;border-radius:12px!important;background:var(--px-surface,#fff)!important;color:var(--px-ink,#142033)!important;font:inherit!important;line-height:1.65!important;resize:vertical;outline-offset:3px}
+#newPinCommentInput:focus{outline:2px solid var(--px-accent,#6c56ff)}
+.pin-card-actions,.pin-card-footer{display:flex;justify-content:flex-end;gap:10px;margin-top:16px}.pin-card-actions button,.pin-card-footer button{border:1px solid var(--px-line,#dce3ed);border-radius:10px;padding:10px 16px;min-height:42px;background:var(--px-surface,#fff);color:var(--px-ink,#142033);font:inherit;font-weight:600;cursor:pointer}.pin-card-actions .btn-pin-submit,.pin-card-footer .btn-pin-resolve{background:var(--px-accent,#6c56ff);border-color:transparent;color:#fff}.pin-card-author{font-size:12px;color:var(--px-muted,#65728a);margin-bottom:12px}.pin-card-body{white-space:pre-wrap;overflow-wrap:anywhere}
+</style><style id="pionxR161InteriorStyleFix">
+/* R16.3: render controls stay close without floating over the whole workspace. */
+#viewRoot:has(.px-studio-actionbar){padding-bottom:28px!important}
+#viewRoot .control-panel[data-px-organised]{overflow:visible!important}
+#viewRoot .control-panel[data-px-organised]>.px-studio-actionbar{
+ position:sticky!important;bottom:12px!important;inset-inline:auto!important;z-index:78!important;
+ width:100%!important;max-width:none!important;margin:18px 0 0!important;padding:12px 14px!important;
+ background:color-mix(in srgb,var(--px-surface) 94%,transparent)!important;
+ border:1px solid color-mix(in srgb,var(--px-accent) 30%,var(--px-line))!important;
+ border-radius:15px!important;box-shadow:0 10px 30px rgba(7,19,41,.18)!important;
+ backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)
+}
+#viewRoot .px-studio-actionbar .px-studio-actioncopy{min-width:0;overflow:hidden}
+#viewRoot .px-studio-actionbar .px-studio-actioncopy strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#viewRoot .px-studio-actionbar .px-studio-actioncopy small{display:block;white-space:normal;line-height:1.45!important}
+#viewRoot .px-studio-actionbar #demoGenerate{min-width:150px!important}
+@media(max-width:1100px){
+ #viewRoot .control-panel[data-px-organised]>.px-studio-actionbar{bottom:10px!important}
+}
+@media(max-width:600px){
+ #viewRoot .control-panel[data-px-organised]>.px-studio-actionbar{
+  position:sticky!important;bottom:8px!important;inset-inline:auto!important;border-radius:14px!important;
+  display:grid!important;grid-template-columns:minmax(0,1fr)!important;gap:8px!important;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom))!important;
+  box-shadow:0 8px 26px rgba(7,19,41,.16)!important
+ }
+ #viewRoot .px-studio-actioncopy small{display:block!important;font-size:10.5px!important}
+ #viewRoot .px-studio-actions{width:100%;gap:8px}
+ #viewRoot .px-studio-actionbar #demoGenerate{flex:1;min-width:0!important}
+ #viewRoot .px-studio-actionbar #studioAdvancedBtn{flex:none}
+ #viewRoot:has(.px-studio-actionbar){padding-bottom:20px!important}
+}
+.px-interior-style-wrap{display:grid;gap:10px;margin:14px 0 0;padding:14px;border:1px solid var(--px-line);border-radius:14px;background:color-mix(in srgb,var(--px-accent) 4%,var(--px-surface));min-width:0}
+.px-interior-style-wrap[hidden]{display:none!important}
+.px-interior-style-options{display:flex;flex-wrap:wrap;gap:8px}
+#viewRoot .px-interior-style-chip{min-height:38px!important;padding:8px 12px!important;font-size:11px!important;border-radius:999px!important}
+#viewRoot .px-interior-style-chip.active{background:var(--px-accent)!important;color:#fff!important;border-color:transparent!important}
+.px-interior-custom-style{width:100%;min-height:44px;padding:10px 12px;border:1px solid var(--px-line);border-radius:10px;background:var(--px-surface);color:var(--px-ink);font-size:13px}
+.px-interior-custom-style[hidden]{display:none!important}
+.px-interior-style-help{display:block;color:var(--px-muted);font-size:10.5px;line-height:1.6}
+</style>
+
+<style id="pionxR165FinalRenderBarFix">
+
+/* R16.5 FINAL: compact sticky render bar — fixes clipped summary beside actions. */
+#viewRoot .control-panel[data-px-organised]>.px-studio-actionbar{
+  position:sticky!important;
+  bottom:12px!important;
+  inset-inline:auto!important;
+  z-index:90!important;
+  width:100%!important;
+  max-width:none!important;
+  margin:16px 0 0!important;
+  padding:12px!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:10px!important;
+  align-items:stretch!important;
+  overflow:hidden!important;
+  box-sizing:border-box!important;
+  background:color-mix(in srgb,var(--px-surface) 98%,transparent)!important;
+  border:1px solid color-mix(in srgb,var(--px-accent) 28%,var(--px-line))!important;
+  border-radius:15px!important;
+  box-shadow:0 10px 30px rgba(7,19,41,.16)!important;
+  backdrop-filter:blur(16px)!important;
+  -webkit-backdrop-filter:blur(16px)!important;
+}
+#viewRoot .px-studio-actionbar .px-studio-actioncopy{
+  width:100%!important;
+  min-width:0!important;
+  overflow:hidden!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  gap:2px!important;
+}
+#viewRoot .px-studio-actionbar .px-studio-actioncopy strong{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-size:13px!important;
+  line-height:1.35!important;
+}
+#viewRoot .px-studio-actionbar .px-studio-actioncopy small{
+  display:block!important;
+  width:100%!important;
+  max-width:100%!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  font-size:11px!important;
+  line-height:1.35!important;
+}
+#viewRoot .px-studio-actionbar .px-studio-actions{
+  width:100%!important;
+  min-width:0!important;
+  display:grid!important;
+  grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr)!important;
+  gap:10px!important;
+  align-items:stretch!important;
+}
+#viewRoot .px-studio-actionbar #studioAdvancedBtn,
+#viewRoot .px-studio-actionbar #demoGenerate{
+  width:100%!important;
+  max-width:none!important;
+  min-width:0!important;
+  min-height:48px!important;
+  margin:0!important;
+  position:static!important;
+  white-space:nowrap!important;
+  overflow:hidden!important;
+  text-overflow:ellipsis!important;
+  border-radius:12px!important;
+}
+#viewRoot .px-studio-actionbar #demoGenerate{font-size:14px!important;font-weight:700!important}
+@media(max-width:600px){
+  #viewRoot .control-panel[data-px-organised]>.px-studio-actionbar{
+    bottom:8px!important;
+    padding:10px!important;
+    gap:8px!important;
+  }
+  #viewRoot .px-studio-actionbar .px-studio-actioncopy small{font-size:10px!important}
+  #viewRoot .px-studio-actionbar .px-studio-actions{grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr)!important;gap:8px!important}
+  #viewRoot .px-studio-actionbar #studioAdvancedBtn,
+  #viewRoot .px-studio-actionbar #demoGenerate{min-height:46px!important;font-size:12px!important;padding:9px 10px!important}
+}
+
+</style>
+
+<style id="pionxR1692PublicThemeFix">
+/* R16.9.2 — public/admin pre-login UI: theme-safe, readable and responsive. */
+#publicSite{
+  --public-bg:#060a12;
+  --public-panel:#0b1320;
+  --public-soft:#101b2a;
+  --public-ink:#f8fafc;
+  --public-muted:#9fb0c6;
+  --public-line:rgba(148,163,184,.18);
+  --public-input:#09131f;
+  --public-shadow:0 24px 70px rgba(0,0,0,.32);
+  background:radial-gradient(circle at 50% -8%,rgba(14,165,233,.11),transparent 34%),linear-gradient(180deg,#060a12 0%,#07101b 55%,#060a12 100%)!important;
+  color:var(--public-ink)!important;
+}
+html[data-theme="light"] #publicSite{
+  --public-bg:#f7f9fc;
+  --public-panel:#ffffff;
+  --public-soft:#f2f6fb;
+  --public-ink:#111827;
+  --public-muted:#64748b;
+  --public-line:#dce4ee;
+  --public-input:#ffffff;
+  --public-shadow:0 22px 64px rgba(33,50,71,.10);
+  background:radial-gradient(circle at 50% -8%,rgba(14,165,233,.09),transparent 34%),linear-gradient(180deg,#ffffff 0%,#f7f9fc 50%,#f2f6fb 100%)!important;
+}
+#publicSite .public-header{
+  min-height:76px!important;height:76px!important;padding:0 34px!important;
+  border-bottom:1px solid var(--public-line)!important;
+  background:rgba(6,10,18,.86)!important;
+  backdrop-filter:blur(18px)!important;-webkit-backdrop-filter:blur(18px)!important;
+  box-shadow:0 1px 0 rgba(255,255,255,.02)!important;
+}
+html[data-theme="light"] #publicSite .public-header{background:rgba(255,255,255,.90)!important;box-shadow:0 6px 28px rgba(33,50,71,.05)!important}
+#publicSite .public-brand{min-width:245px!important;gap:12px!important;color:var(--public-ink)!important}
+#publicSite .public-brand .logo-frame{width:38px!important;height:42px!important;display:grid!important;place-items:center!important}
+#publicSite .public-brand .logo-frame img{width:34px!important;height:34px!important;object-fit:contain!important;border-radius:0!important}
+#publicSite .public-brand b{color:var(--public-ink)!important;font-size:16px!important;letter-spacing:.01em!important}
+#publicSite .public-brand small{color:#0ea5e9!important;font-size:9px!important;letter-spacing:.08em!important;font-weight:800!important}
+#publicSite .public-nav{gap:28px!important}
+#publicSite .public-nav a{color:var(--public-muted)!important;font-size:14px!important;font-weight:600!important;transition:color .18s ease!important}
+#publicSite .public-nav a:hover{color:var(--public-ink)!important}
+#publicSite .public-actions{display:flex!important;align-items:center!important;gap:9px!important;flex-wrap:nowrap!important}
+#publicSite .public-actions .icon-btn,#publicSite .public-actions .lang-btn{
+  width:auto!important;min-width:44px!important;height:42px!important;min-height:42px!important;padding:0 13px!important;
+  border-radius:12px!important;background:var(--public-panel)!important;border:1px solid var(--public-line)!important;color:var(--public-ink)!important;
+}
+#publicSite #openAuth{
+  min-width:84px!important;height:42px!important;padding:0 16px!important;border-radius:12px!important;
+  background:var(--public-panel)!important;border:1px solid var(--public-line)!important;color:var(--public-ink)!important;
+  font-weight:700!important;white-space:nowrap!important;
+}
+#publicSite #startFree,#publicSite #seeStudio{
+  width:auto!important;min-width:max-content!important;height:44px!important;min-height:44px!important;padding:0 20px!important;
+  display:inline-flex!important;align-items:center!important;justify-content:center!important;gap:8px!important;
+  border:0!important;border-radius:12px!important;background:linear-gradient(135deg,#0284c7,#2563eb)!important;color:#fff!important;
+  font-size:14px!important;font-weight:800!important;line-height:1!important;white-space:nowrap!important;box-shadow:0 10px 26px rgba(37,99,235,.22)!important;
+}
+#publicSite #startFree:hover,#publicSite #seeStudio:hover{transform:translateY(-1px)!important;filter:brightness(1.04)!important}
+#publicSite .public-main{max-width:1440px!important;padding:22px 30px 76px!important}
+#publicSite .mnml-hero-wrap{max-width:1180px!important;padding:44px 24px 28px!important;text-align:center!important}
+#publicSite .mnml-badge{margin-bottom:22px!important;background:rgba(14,165,233,.08)!important;border-color:rgba(14,165,233,.26)!important;color:#0284c7!important;font-size:12px!important}
+html[data-theme="dark"] #publicSite .mnml-badge{color:#38bdf8!important}
+#publicSite .mnml-hero-title{max-width:980px!important;margin:0 auto 22px!important;color:var(--public-ink)!important;font-size:clamp(3rem,5.4vw,5.25rem)!important;line-height:1.04!important;letter-spacing:-.055em!important}
+#publicSite .mnml-hero-title .mnml-hero-emphasis{
+  background:linear-gradient(135deg,#f8fafc 15%,#a8b7ca 100%)!important;
+  -webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important;
+}
+html[data-theme="light"] #publicSite .mnml-hero-title .mnml-hero-emphasis{
+  background-image:linear-gradient(135deg,#0f172a 20%,#64748b 100%)!important;
+  background-color:transparent!important;
+  -webkit-background-clip:text!important;background-clip:text!important;
+  -webkit-text-fill-color:transparent!important;color:transparent!important;
+}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  #publicSite .mnml-hero-title .mnml-hero-emphasis{background:none!important;-webkit-text-fill-color:currentColor!important;color:var(--public-ink)!important}
+}
+#publicSite .mnml-hero-wrap>p{color:var(--public-muted)!important;font-size:17px!important;line-height:1.55!important;max-width:720px!important;margin:0 auto 28px!important}
+#publicSite .mnml-hero-actions{display:flex!important;justify-content:center!important;align-items:center!important;gap:12px!important;flex-wrap:wrap!important;margin:0 0 36px!important}
+#publicSite .public-secondary-action{
+  min-height:44px!important;padding:0 20px!important;display:inline-flex!important;align-items:center!important;justify-content:center!important;
+  border:1px solid var(--public-line)!important;border-radius:12px!important;background:var(--public-panel)!important;color:var(--public-ink)!important;
+  text-decoration:none!important;font-size:14px!important;font-weight:700!important;white-space:nowrap!important;
+}
+#publicSite .public-secondary-action:hover{border-color:#38bdf8!important;color:#0284c7!important}
+#publicSite .mnml-slider-box{border:1px solid var(--public-line)!important;box-shadow:var(--public-shadow)!important;background:#0a0f16!important}
+#publicSite .mnml-slider-tag{color:#fff!important}
+#publicSite .professional-entry{margin:54px auto 76px!important;scroll-margin-top:96px!important}
+#publicSite .auth-card{background:var(--public-panel)!important;color:var(--public-ink)!important;border:1px solid var(--public-line)!important;box-shadow:var(--public-shadow)!important}
+#publicSite .auth-head b{color:var(--public-ink)!important}
+#publicSite .auth-head small,#publicSite .auth-note,#publicSite .auth-help{color:var(--public-muted)!important}
+#publicSite .auth-tabs{background:var(--public-soft)!important;border-color:var(--public-line)!important}
+#publicSite .auth-tabs button{color:var(--public-muted)!important}
+#publicSite .auth-tabs button.active{background:var(--public-ink)!important;color:var(--public-bg)!important;box-shadow:none!important}
+#publicSite .auth-pane label,#publicSite .auth-line label{color:var(--public-muted)!important}
+#publicSite .auth-pane input[type="text"],#publicSite .auth-pane input[type="email"],#publicSite .auth-pane input[type="password"]{
+  background:var(--public-input)!important;color:var(--public-ink)!important;border-color:var(--public-line)!important;box-shadow:none!important;
+}
+#publicSite .auth-pane input::placeholder{color:color-mix(in srgb,var(--public-muted) 72%,transparent)!important}
+#publicSite .auth-pane input:-webkit-autofill,
+#publicSite .auth-pane input:-webkit-autofill:hover,
+#publicSite .auth-pane input:-webkit-autofill:focus{
+  -webkit-box-shadow:0 0 0 1000px var(--public-input) inset!important;
+  -webkit-text-fill-color:var(--public-ink)!important;
+  caret-color:var(--public-ink)!important;
+  border-color:var(--public-line)!important;
+}
+#publicSite .auth-line a{color:#0284c7!important}
+#publicSite #googleAuth{width:100%!important;height:44px!important;min-height:44px!important;border-radius:12px!important;background:var(--public-soft)!important;color:var(--public-ink)!important;border:1px solid var(--public-line)!important}
+#publicSite #authProviderDivider{color:var(--public-muted)!important}
+#publicSite #tools-section,#publicSite #public-explore,#publicSite #public-pricing{border-top:1px solid var(--public-line)!important;margin-top:26px!important}
+#publicSite #tools-section h2,#publicSite #public-explore h2,#publicSite #public-pricing h2{color:var(--public-ink)!important}
+#publicSite #tools-section p,#publicSite #public-explore p,#publicSite #public-pricing p{color:var(--public-muted)!important}
+#publicSite #tools-section a,#publicSite #public-explore a,#publicSite #public-pricing a{color:#0284c7!important;font-weight:700!important}
+#publicSite :is(a,button,input):focus-visible{
+  outline:3px solid color-mix(in srgb,#0ea5e9 72%,white)!important;
+  outline-offset:3px!important;
+}
+@media(max-width:900px){
+  #publicSite .public-header{height:auto!important;min-height:70px!important;padding:12px 18px!important;gap:12px!important}
+  #publicSite .public-brand{min-width:0!important}
+  #publicSite .public-nav{display:none!important}
+  #publicSite .public-actions{margin-inline-start:auto!important}
+  #publicSite .public-main{padding:18px 16px 62px!important}
+  #publicSite .mnml-hero-wrap{padding:34px 12px 24px!important}
+  #publicSite .mnml-hero-title{font-size:clamp(2.7rem,8vw,4.2rem)!important}
+  #publicSite .mnml-slider-box{height:min(58vw,430px)!important}
+}
+@media(max-width:620px){
+  #publicSite .public-brand>span:last-child small{display:none!important}
+  #publicSite .public-brand b{font-size:14px!important}
+  #publicSite .public-actions{gap:6px!important}
+  #publicSite #startFree{display:none!important}
+  #publicSite #openAuth{min-width:72px!important;padding:0 12px!important}
+  #publicSite .public-actions .lang-btn{padding:0 10px!important}
+  #publicSite .mnml-hero-wrap{padding-top:28px!important}
+  #publicSite .mnml-badge{font-size:10px!important;padding:6px 10px!important}
+  #publicSite .mnml-hero-title{font-size:clamp(2.25rem,12vw,3.35rem)!important;letter-spacing:-.045em!important}
+  #publicSite .mnml-hero-wrap>p{font-size:15px!important}
+  #publicSite .mnml-hero-actions{display:grid!important;grid-template-columns:1fr!important;max-width:340px!important;margin:0 auto 28px!important}
+  #publicSite #seeStudio,#publicSite .public-secondary-action{width:100%!important}
+  #publicSite .mnml-slider-box{height:62vw!important;min-height:230px!important}
+  #publicSite .professional-entry{padding:0 6px!important;margin-top:34px!important}
+  #publicSite .auth-card{padding:28px 20px!important;border-radius:20px!important}
+}
+</style>
+<style>html[data-px-route-boot="pending"] #publicSite,html[data-px-route-boot="pending"] #appShell,html[data-px-route-boot="pending"] .px-site-footer{display:none!important}html:not([data-px-route-boot="pending"]) #workspaceBoot1616{display:none!important}</style>
+<link rel="stylesheet" href="pionx-experience-r1617.css?v=20261012-r1617">
+</head>
+<body data-admin-workspace="true">
+<div id="workspaceBoot1616" role="status" aria-live="polite"><img src="assets/pionx-logo-transparent-r16.png" alt="PIONX"><strong>Restoring your workspace… / جارٍ استعادة مساحة العمل…</strong><div class="px-boot-line1616" aria-hidden="true"></div><p>Your page will open here. / صفحتك هتفتح هنا.</p></div>
+
+  <!-- ================= PRE-LOGIN / PUBLIC SITE ================= -->
+  <section class="public-site" id="publicSite">
+    
+    <header class="public-header" style="display:flex; justify-content:space-between; align-items:center; padding:14px 32px; border-bottom:1px solid rgba(255,255,255,0.08);">
+      <button class="public-brand" id="publicBrand" aria-label="PIONX AI home" style="background:transparent; border:none; display:flex; align-items:center; gap:12px; cursor:pointer;">
+        <span class="logo-frame"><img src="assets/pionx-logo-transparent-r16.png" alt="PIONX" style="width:30px; border-radius:6px;"></span>
+        <span style="text-align:left;"><b style="display:block; color:#fff; font-size:16px;">PIONX AI</b><small style="color:#38bdf8; font-size:9px; letter-spacing:1px; font-weight:700;">ARCHITECTURE INTELLIGENCE</small></span>
+      </button>
+      
+      <nav class="public-nav" id="publicNavReview" style="display:flex; gap:24px;">
+        <a href="#tools-section" style="color:#94a3b8; text-decoration:none;">Tools</a>
+        <a href="#slider-box" style="color:#94a3b8; text-decoration:none;">Before & After</a>
+        <a href="#public-explore" style="color:#94a3b8; text-decoration:none;">Showcase</a>
+        <a href="#public-pricing" style="color:#94a3b8; text-decoration:none;">Pricing</a>
+      </nav>
+
+      <div class="public-actions" style="display:flex; align-items:center; gap:12px;">
+        <button class="icon-btn" id="themeBtnPublic" title="Switch to light theme" aria-label="Switch to light theme">☼</button>
+        <button class="lang-btn" id="publicLang">EN / AR</button>
+        <button class="public-signin" id="openAuth">Sign in</button>
+        <button class="public-primary-action" id="startFree">Start Free</button>
+      </div>
+    </header>
+
+    <main class="public-main">
+      <!-- HERO -->
+      <section class="mnml-hero-wrap">
+        <div class="mnml-badge">✦ Architecture & Interior Design AI Workspace</div>
+        <h1 class="mnml-hero-title">Render architecture<br><span class="mnml-hero-emphasis">in seconds, not hours.</span></h1>
+        <p style="font-size:16px; color:#94a3b8; max-width:640px; margin:0 auto 30px;">Transform sketches, 3D models, and Revit/CAD massing into photorealistic architectural renders, cinematic videos, and client presentations with zero setup.</p>
+        
+        <div class="mnml-hero-actions">
+          <button class="public-primary-action" id="seeStudio">Launch AI Studio →</button>
+          <a class="public-secondary-action" href="#entrySection">Create Studio Account</a>
+        </div>
+
+        <!-- BEFORE & AFTER SLIDER -->
+        <div class="mnml-slider-box" id="slider-box">
+          <img class="mnml-slider-under" src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" alt="Photorealistic architectural render">
+          <div class="mnml-slider-over" id="sliderBeforeLayer">
+            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=1200&q=80" alt="Architectural sketch draft">
+          </div>
+          <div class="mnml-slider-handle" id="sliderHandle">↔</div>
+          <span class="mnml-slider-tag tag-sketch">SKETCH / DRAFT</span>
+          <span class="mnml-slider-tag tag-render">PIONX RENDER</span>
+        </div>
+      </section>
+
+      <!-- AUTHENTICATION FORM -->
+      <section class="professional-entry" id="entrySection">
+        <aside class="auth-card" id="authCard">
+          <div class="auth-head">
+            <span class="logo-frame"><img src="assets/pionx-logo-transparent-r16.png" alt="PIONX" style="width:36px; border-radius:8px;"></span>
+            <b id="authTitleText">Enter PIONX Workspace</b>
+            <small id="authSubtitleText">Continue to your architecture workspace</small>
+          </div>
+
+          <div class="auth-tabs">
+            <button class="active" data-auth-tab="signin" id="tabSignIn" data-auth-tab="signin">Sign in</button>
+            <button data-auth-tab="signup" id="tabSignUp" data-auth-tab="signup">Create account</button>
+          </div>
+          
+          <!-- SIGN IN FORM -->
+          <div class="auth-pane" data-auth-pane="signin">
+            <label><span class="txt-email">Work Email</span>
+              <input id="signinEmail" type="email" placeholder="you@studio.com" autocomplete="email" required>
+            </label>
+            
+            <label><span class="txt-pwd">Password</span>
+              <div class="pwd-input-wrap">
+                <input id="signinPassword" type="password" placeholder="Enter password" autocomplete="current-password" required minlength="8">
+                <button type="button" class="eye-toggle-btn" id="toggleSigninPassword" aria-label="Toggle password visibility">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </label>
+
+            <div class="auth-line">
+              <label><input type="checkbox" id="rememberMe" checked> <span class="txt-remember">Remember me</span></label>
+              <a href="#" id="forgotPasswordLink" class="txt-forgot">Forgot password?</a>
+            </div>
+            
+            <button class="gold-btn full" id="publicSignIn">Sign in</button>
+          </div>
+
+          <!-- CREATE ACCOUNT FORM -->
+          <div class="auth-pane" data-auth-pane="signup" hidden>
+            <label><span class="txt-name">Architect Name</span>
+              <input id="signupName" type="text" placeholder="Zaha Hadid" autocomplete="name">
+            </label>
+            
+            <label><span class="txt-email">Work Email</span>
+              <input id="signupEmail" type="email" placeholder="you@studio.com" autocomplete="email" required>
+            </label>
+            
+            <label><span class="txt-create-pwd">Create Password</span>
+              <div class="pwd-input-wrap">
+                <input id="signupPassword" type="password" placeholder="Min. 8 characters" autocomplete="new-password" required minlength="8">
+                <button type="button" class="eye-toggle-btn" id="toggleSignupPassword" aria-label="Toggle password visibility">
+                  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                </button>
+              </div>
+            </label>
+            
+            <button class="gold-btn full" id="publicCreate">Create account</button>
+          </div>
+
+                    <div class="auth-pane" id="recoveryRequestPane" hidden>
+            <p class="auth-help">Enter your PIONX account email. We will send a password reset link if the account can receive one.</p>
+            <label>Email<input id="recoveryEmail" type="email" placeholder="you@studio.com" autocomplete="email" required></label>
+            <button class="gold-btn full" id="sendRecoveryEmail">Send reset link</button>
+            <button class="auth-back" data-auth-back="signin">Back to sign in</button>
+          </div>
+          <div class="auth-pane" id="recoveryUpdatePane" hidden>
+            <p class="auth-help">Choose a new password for your PIONX account.</p>
+            <label>New password<input id="recoveryNewPassword" type="password" placeholder="At least 8 characters" autocomplete="new-password" required minlength="8"></label>
+            <label>Confirm password<input id="recoveryConfirmPassword" type="password" placeholder="Repeat new password" autocomplete="new-password" required minlength="8"></label>
+            <button class="gold-btn full" id="saveRecoveryPassword">Save new password</button>
+            <button class="auth-back" data-auth-back="signin">Back to sign in</button>
+          </div>
+<div id="authProviderDivider" style="text-align:center; margin:16px 0; color:#64748b; font-size:12px;">or continue with</div>
+          <div id="authProviders"><button class="icon-btn" id="googleAuth" data-auth-provider="google" style="width:100%; padding:10px; border-radius:10px;">Continue with Google</button></div>
+          <small class="auth-note" id="authStatus" style="display:block; text-align:center; margin-top:14px; color:#64748b; font-size:12px;">Sign in securely to your workspace.</small>
+        </aside>
+      </section>
+<section id="tools-section" class="mnml-hero-wrap"><h2>Your architecture workspace</h2><p>AI Studio, Visual DNA, Video, Film, Flow, and Presentation bring your image workflows together.</p><a href="#entrySection">Sign in to use the tools →</a></section>
+<section id="public-explore" class="mnml-hero-wrap"><h2>From source to finished presentation</h2><p>Use the comparison above to explore a sample. Inside your account, Renders and Projects show your saved work.</p><a href="#slider-box">Explore the before and after →</a></section>
+<section id="public-pricing" class="mnml-hero-wrap"><h2>Plans and credits</h2><p>Sign in to review your balance and available render options. Online plan and credit purchases are currently unavailable while payment setup is being completed.</p><a href="#entrySection">View your workspace →</a></section>
+    </main>
+  </section>
+
+  <!-- ================= SIGNED-IN APP (FULL WIDTH WORKSPACE) ================= -->
+  <div class="app-shell" id="appShell" hidden>
+    
+    <!-- 1. TOP HEADER (BRAND, SEARCH, ACTIONS) -->
+    <header class="topbar">
+      <div class="brand" data-route="home" role="button" tabindex="0" style="display:flex; align-items:center; gap:10px; cursor:pointer;">
+        <span class="logo-frame"><img src="assets/pionx-logo-transparent-r16.png" alt="PIONX" style="width:28px; border-radius:6px;"></span>
+        <div><strong style="color:var(--text-main); font-size:15px;">PIONX AI</strong><small style="display:block; font-size:8px; color:var(--accent-cyan); letter-spacing:1px;">WORKSPACE</small></div>
+      </div>
+
+<nav id="mainNav" class="px-navigation" aria-label="Main navigation"><a class="nav-item" href="#home" data-route="home"><b class="nav-txt-home">Home</b></a><div class="px-nav-group"><button type="button" class="px-nav-trigger" aria-expanded="false" aria-controls="px-menu-0"><span data-px-en="Studio" data-px-ar="الاستوديو">Studio</span><span aria-hidden="true">⌄</span></button><div class="px-dropdown" id="px-menu-0" hidden><a class="nav-item" href="#studio" data-route="studio"><b class="nav-txt-studio" data-px-en="AI Studio" data-px-ar="استوديو الصور">AI Studio</b><small data-px-en="Source images → architectural renders" data-px-ar="من الصور إلى ريندر معماري">Source images → architectural renders</small></a><a class="nav-item" href="#flow" data-route="flow"><b class="nav-txt-flow" data-px-en="Flow Canvas" data-px-ar="لوحة الأفكار">Flow Canvas</b><small data-px-en="Connect references and project stages" data-px-ar="ربط المراجع ومراحل المشروع">Connect references and project stages</small></a><a class="nav-item" href="#consistency" data-route="consistency"><b class="nav-txt-dna" data-px-en="Visual DNA" data-px-ar="اتساق التصميم">Visual DNA</b><small data-px-en="Keep the same design across views" data-px-ar="الحفاظ على التصميم عبر المشاهد">Keep the same design across views</small></a><a class="nav-item" href="#video" data-route="video"><b class="nav-txt-video" data-px-en="Video Studio" data-px-ar="استوديو الفيديو">Video Studio</b><small data-px-en="Turn architectural images into motion" data-px-ar="تحويل الصور المعمارية إلى حركة">Turn architectural images into motion</small></a><a class="nav-item" href="#film" data-route="film"><b class="nav-txt-film" data-px-en="PIONX Film" data-px-ar="فيلم المشروع">PIONX Film</b><small data-px-en="Arrange scenes into a project film" data-px-ar="ترتيب المشاهد في فيلم للمشروع">Arrange scenes into a project film</small></a><a class="nav-item" href="#presentation" data-route="presentation"><b class="nav-txt-pres" data-px-en="Presentation" data-px-ar="العروض التقديمية">Presentation</b><small data-px-en="Organize boards for your clients" data-px-ar="تنظيم لوحات العرض للعميل">Organize boards for your clients</small></a></div></div><div class="px-nav-group"><button type="button" class="px-nav-trigger" aria-expanded="false" aria-controls="px-menu-1"><span data-px-en="Workspace" data-px-ar="مساحة العمل">Workspace</span><span aria-hidden="true">⌄</span></button><div class="px-dropdown" id="px-menu-1" hidden><a class="nav-item" href="#projects" data-route="projects"><b class="nav-txt-projects" data-px-en="Projects" data-px-ar="المشروعات">Projects</b><small data-px-en="Manage your project workspace" data-px-ar="إدارة مساحة مشروعاتك">Manage your project workspace</small></a><a class="nav-item" href="#renders" data-route="renders"><b class="nav-txt-renders" data-px-en="Renders" data-px-ar="النتائج">Renders</b><small data-px-en="Review and download your outputs" data-px-ar="مراجعة النتائج وتنزيلها">Review and download your outputs</small></a><a class="nav-item" href="#albums" data-route="albums"><b class="nav-txt-albums" data-px-en="Albums" data-px-ar="الألبومات">Albums</b><small data-px-en="Group images by project" data-px-ar="تجميع الصور حسب المشروع">Group images by project</small></a><a class="nav-item" href="#assets" data-route="assets"><b class="nav-txt-assets" data-px-en="Assets" data-px-ar="المكتبة">Assets</b><small data-px-en="Your source images and references" data-px-ar="صور المصدر والمراجع">Your source images and references</small></a><a class="nav-item" href="#explore" data-route="explore"><b class="nav-txt-showcase" data-px-en="Showcase" data-px-ar="المعرض">Showcase</b><small data-px-en="Explore architectural inspiration" data-px-ar="استكشاف الإلهام المعماري">Explore architectural inspiration</small></a><a class="nav-item" href="#portfolio" data-route="portfolio"><b class="nav-txt-portfolio" data-px-en="Portfolio" data-px-ar="ملف الأعمال">Portfolio</b><small data-px-en="Present your selected work" data-px-ar="عرض أعمالك المختارة">Present your selected work</small></a></div></div><div class="px-nav-group"><button type="button" class="px-nav-trigger" aria-expanded="false" aria-controls="px-menu-2"><span data-px-en="Account" data-px-ar="الحساب">Account</span><span aria-hidden="true">⌄</span></button><div class="px-dropdown" id="px-menu-2" hidden><a class="nav-item" href="#profile" data-route="profile"><b class="nav-txt-profile" data-px-en="Profile" data-px-ar="الملف الشخصي">Profile</b><small data-px-en="Your professional profile" data-px-ar="ملفك المهني">Your professional profile</small></a><a class="nav-item" href="#settings" data-route="settings"><b class="nav-txt-settings" data-px-en="Settings" data-px-ar="الإعدادات">Settings</b><small data-px-en="Preferences and account settings" data-px-ar="التفضيلات وإعدادات الحساب">Preferences and account settings</small></a><a class="nav-item" href="#plans" data-route="plans"><b class="nav-txt-plans" data-px-en="Plans & credits" data-px-ar="الخطط والرصيد">Plans & credits</b><small data-px-en="Review available plans" data-px-ar="الاطلاع على الخطط المتاحة">Review available plans</small></a><a href="about.html"><b data-px-en="About PIONX" data-px-ar="عن بيونكس">About PIONX</b></a><a href="contact.html"><b data-px-en="Contact" data-px-ar="تواصل معنا">Contact</b></a><div class="px-nav-divider"></div><a class="admin-nav" href="admin.html#admin" hidden><b data-px-en="Administration" data-px-ar="الإدارة">Administration</b><small data-px-en="Administrator workspace" data-px-ar="مساحة الإدارة">Administrator workspace</small></a></div></div></nav>
+      <label class="search-box">
+        <span>⌕</span>
+        <input id="globalSearch" placeholder="Search architecture projects, prompts..."/>
+        <kbd>Ctrl K</kbd>
+      </label>
+
+      <div class="top-actions">
+        <!-- DAY / DARK MODE SWITCHER -->
+        <button class="icon-btn" id="themeBtn" title="Change theme" aria-label="Change theme">☼</button>
+        <!-- ARABIC / ENGLISH TRANSLATOR -->
+        <button class="lang-btn" id="appLang">EN / AR</button>
+        <button class="credit-btn" data-route="plans"><span>$</span><b id="topCredits">0 Credits</b><strong>＋</strong></button>
+        <button class="user-menu" id="userMenu" aria-label="Account menu"><span class="avatar" id="topAvatar">PX</span><span><b id="topUserName">Architect</b></span></button>
+      </div>
+    </header>
+
+    <!-- 2. HORIZONTAL SUITE BAR (PREVIOUS SIDEBAR MOVED TO TOP) -->
+
+    <!-- 3. FULL 100% WIDTH WORKSPACE ROOT -->
+    <section class="workspace">
+      <main id="viewRoot" class="view-root" aria-live="polite"></main>
+    </section>
+  </div>
+
+  <div class="account-popover" id="accountPopover" hidden>
+    <button data-route="profile">Profile</button>
+    <button data-route="settings">Settings</button>
+    <button id="demoLogout">Log out</button>
+  </div>
+
+  <!-- RENDER MIND MODAL -->
+  <div class="render-mind" id="renderMind" hidden>
+    <div class="render-mind-shell">
+      <div class="render-mind-head">
+        <div><small>PIONX AUTO™ INTELLIGENCE</small><h2>Rendering Architectural Scene</h2><p id="renderMindScene">Scene intelligence is preparing your output.</p></div>
+        <button id="renderMindClose">×</button>
+      </div>
+      <div class="render-mind-body">
+        <div class="mind-character mind-character-video">
+          <video id="pionxRenderVideo" muted loop playsinline preload="metadata" poster="pionx-main/assets/pionx-render-character.png?v=16.12.7">
+            <source src="pionx-main/assets/pionx-rendering.mp4?v=16.12.7" type="video/mp4">
+          </video>
+          <img id="pionxRenderPoster" src="pionx-main/assets/pionx-render-character.png?v=16.12.7" alt="PIONX rendering character" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:2;pointer-events:none;background:#030813">
+          <button type="button" id="pionxVideoFallback" class="mind-video-fallback" hidden>Play render character</button>
+        </div>
+        <div class="mind-status">
+          <div class="mind-status-copy"><b id="renderMindStatus">Analyzing camera focal depth & materials…</b><strong id="renderMindPct">14%</strong></div>
+          <div class="mind-progress"><i id="renderMindBar"></i></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <!-- CORE SCRIPTS -->
+  <script defer src="pionx-main/locales/locale17.js?v=16.17-r1615"></script>
+  <script defer src="pionx-main/vendor/jszip.min.js"></script>
+  <script defer src="pionx-main/vendor/pdf-lib.min.js"></script>
+  <script defer src="pionx-main/vendor/pptxgen.min.js"></script>
+  <script defer src="pionx-auth-r1614.js?v=20261012-r1617"></script>
+  <link rel="stylesheet" href="pionx-design02.css?v=20261012-r1617">
+  <script defer src="pionx-assistant-workflows-r1615.js?v=20261012-r1617"></script>
+  <script defer src="pionx-interface-icons-r1616.js?v=20261012-r1617"></script>
+  <script defer src="pionx-app-r16.js?v=20261012-r1617"></script>
+
+  
+<footer class="px-site-footer"><span>© PIONX AI</span><nav><a href="about.html">About</a><a href="contact.html">Contact</a></nav></footer>
+  <link rel="stylesheet" href="pionx-design02-shell.css?v=20261012-r1617">
+  <script defer src="pionx-design02-shell.js?v=20261012-r1617"></script>
+  <link rel="stylesheet" href="pionx-voice-r1613.css?v=20261012-r1617">
+  <script defer src="pionx-experience-r1617.js?v=20261012-r1617"></script>
+  <script defer src="pionx-voice-r1613.js?v=20261012-r1617"></script>
+  <link rel="stylesheet" href="pionx-interface-r1616.css?v=20261012-r1617">
+  <!-- WORKSPACE SCRIPTS: THEME TOGGLE, FULL ARABIC & LIVE VIDEO CARDS -->
+  <script defer src="pionx-public-ui-r1694.js?v=16.17-full-locale"></script>
+</body>
+</html>
